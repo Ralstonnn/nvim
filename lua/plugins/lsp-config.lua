@@ -31,6 +31,7 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
+			local home = os.getenv('HOME')
 
 			local empty_setup_servers = {
 				"clangd",
@@ -90,9 +91,34 @@ return {
 					return true
 				end
 			})
+
+			-------------------------------------------------------------------
+			-- Get typescript local or take global version volar
+			-------------------------------------------------------------------
+			local util = require 'lspconfig.util'
+			local function get_typescript_server_path(root_dir)
+				local global_ts = home .. '/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib'
+				local found_ts = ''
+				local function check_dir(path)
+					found_ts =  util.path.join(path, 'node_modules', 'typescript', 'lib')
+					if util.path.exists(found_ts) then
+						return path
+					end
+				end
+				if util.search_ancestors(root_dir, check_dir) then
+					return found_ts
+				else
+					return global_ts
+				end
+			end
+
 			lspconfig.volar.setup({
-				filetypes = { 'vue' }
+				filetypes = { 'vue' },
+				on_new_config = function(new_config, new_root_dir)
+					new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+				end,
 			})
+			-------------------------------------------------------------------
 
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
