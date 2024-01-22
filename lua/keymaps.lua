@@ -24,3 +24,9 @@ vim.keymap.set('n', '<leader>h', ':sp<CR>',{})
 vim.keymap.set('n', '<C-d>', '<C-d>zz',{})
 vim.keymap.set('n', '<C-u>', '<C-u>zz',{})
 
+-- Remap default deletion 
+vim.keymap.set('n', 'd', '"_d', {})
+vim.keymap.set('n', 'yd', 'd',{})
+vim.keymap.set('n', 'dd', '"_dd', {})
+vim.keymap.set('n', 'ydd', 'dd',{})
+
