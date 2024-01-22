@@ -20,3 +20,7 @@ vim.keymap.set('n', '<C-S-k>', ':resize +5<CR>', {})
 vim.keymap.set('n', '<leader>v', ':vsp<CR>',{})
 vim.keymap.set('n', '<leader>h', ':sp<CR>',{})
 
+-- Remap <C-d> and <C-u> to center text
+vim.keymap.set('n', '<C-d>', '<C-d>zz',{})
+vim.keymap.set('n', '<C-u>', '<C-u>zz',{})
+
