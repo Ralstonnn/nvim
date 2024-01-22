@@ -6,13 +6,13 @@ return {
 		config = function ()
 			local bufferline = require('bufferline')
 
-			vim.keymap.set('n', '<leader>bn', ':BufferLineCycleNext<CR>', {})
-			vim.keymap.set('n', '<leader>bp', ':BufferLineCyclePrev<CR>', {})
-			vim.keymap.set('n', '<leader>bk', ':BufferLinePick<CR>', {})
-			vim.keymap.set('n', '<leader>bcc', ':BufferLinePickClose<CR>', {})
-			vim.keymap.set('n', '<leader>bcl', ':BufferLineCloseLeft<CR>', {})
-			vim.keymap.set('n', '<leader>bcr', ':BufferLineCloseRight<CR>', {})
-			vim.keymap.set('n', '<leader>bco', ':BufferLineCloseOthers<CR>', {})
+			vim.keymap.set('n', 'bn', ':BufferLineCycleNext<CR>', {})
+			vim.keymap.set('n', 'bp', ':BufferLineCyclePrev<CR>', {})
+			vim.keymap.set('n', 'bk', ':BufferLinePick<CR>', {})
+			vim.keymap.set('n', 'bck', ':BufferLinePickClose<CR>', {})
+			vim.keymap.set('n', 'bcl', ':BufferLineCloseLeft<CR>', {})
+			vim.keymap.set('n', 'bcr', ':BufferLineCloseRight<CR>', {})
+			vim.keymap.set('n', 'bco', ':BufferLineCloseOthers<CR>', {})
 
 			bufferline.setup()
 		end

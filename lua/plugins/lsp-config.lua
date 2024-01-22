@@ -53,6 +53,7 @@ return {
 					-- capabilities = capabilities,
 				})
 			end
+
 			lspconfig.eslint.setup({
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -61,6 +62,7 @@ return {
 					})
 				end
 			})
+
 			lspconfig.lua_ls.setup({
 				on_init = function(client)
 					local path = client.workspace_folders[1].name
@@ -132,6 +134,7 @@ return {
 				callback = function(ev)
 					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+					vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
 					vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
 					vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, {})
