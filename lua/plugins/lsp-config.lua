@@ -35,6 +35,7 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local empty_setup_servers = {
+				"eslint",
 				"lua_ls",
 				"clangd",
 				"cmake",
