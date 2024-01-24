@@ -57,9 +57,7 @@ return {
 				})
 			end
 
-			-------------------------------------------------------------------
-			-- Get typescript local or take global version volar
-			-------------------------------------------------------------------
+			-- NOTE: Get typescript local or take global version volar
 			local util = require("lspconfig.util")
 			local function get_typescript_server_path(root_dir)
 				local global_ts = home

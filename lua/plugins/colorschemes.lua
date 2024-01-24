@@ -7,9 +7,9 @@ return {
 	-- 		style = "dark"
 	-- 	}
 	-- },
-	-- { 
-	-- 	"ellisonleao/gruvbox.nvim", 
-	-- 	priority = 1000, 
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	priority = 1000,
 	-- 	config = function ()
 	-- 		vim.o.background = "dark" -- or "light" for light mode
 	-- 		vim.cmd.colorscheme "gruvbox"
@@ -19,12 +19,12 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
-		config = function ()
+		config = function()
 			local catppuccin = require("catppuccin")
 			catppuccin.setup({
-				flavour = "mocha"
+				flavour = "mocha",
 			})
-			vim.cmd.colorscheme "catppuccin"
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	-- {

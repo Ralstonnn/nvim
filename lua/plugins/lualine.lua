@@ -1,17 +1,17 @@
 return {
 	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = true,
 		opts = {
 			sections = {
 				lualine_c = {
 					{
-						'filename',
+						"filename",
 						path = 1,
-					}
-				}
-			}
-		}
-	}
+					},
+				},
+			},
+		},
+	},
 }

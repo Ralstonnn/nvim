@@ -8,4 +8,3 @@ vim.cmd("set foldcolumn=1")
 vim.cmd("set foldmethod=manual")
 
 vim.g.mapleader = " "
-
