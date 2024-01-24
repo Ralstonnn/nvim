@@ -31,4 +31,6 @@ vim.keymap.set('n', 'dd', '"_dd', {})
 vim.keymap.set('n', '<S-d><S-d>', 'dd',{})
 vim.keymap.set('v', 'p', 'pgvy', {})
 vim.keymap.set('v', '<S-p>', 'p', {})
+vim.keymap.set('v', '<C-y>', '"+y', {})
+vim.keymap.set({'n', 'v'}, '<C-p>', '"+p', {})
 
