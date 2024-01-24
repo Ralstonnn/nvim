@@ -48,6 +48,7 @@ return {
 				"jsonls",
 				"tailwindcss",
 				"tsserver",
+				"sqlls",
 			}
 
 			for _, lsp in ipairs(empty_setup_servers) do
