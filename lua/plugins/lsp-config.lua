@@ -15,7 +15,6 @@ return {
 				"cssmodules_ls",
 				"dockerls",
 				"docker_compose_language_service",
-				"eslint",
 				-- "emmet_ls",
 				"html",
 				"jdtls",
@@ -35,7 +34,6 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local empty_setup_servers = {
-				"eslint",
 				"lua_ls",
 				"clangd",
 				"cmake",
@@ -58,7 +56,7 @@ return {
 				})
 			end
 
-			-- NOTE: Get typescript local or take global version volar
+			-- NOTE: Get typescript project-local or take global version volar
 			local util = require("lspconfig.util")
 			local function get_typescript_server_path(root_dir)
 				local global_ts = home
