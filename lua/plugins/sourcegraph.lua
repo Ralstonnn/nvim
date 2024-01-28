@@ -12,7 +12,8 @@ return {
 				vim.ui.input({ prompt = "Question: " }, function(input)
 					-- If user does not provide any input, default to "Explain this code"
 					if input == "" or input == nil then
-						input = "Explain this code"
+						return
+						-- input = "Explain this code"
 					end
 					-- Execute escape sequence to exit visual mode and save marks
 					local key = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
