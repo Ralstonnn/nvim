@@ -88,13 +88,13 @@ return {
 			}
 
 			local open_bracket_prefix = {
-				d = { "Diagnostics GoTo Next" },
-				t = { "Netx Todo Comment" },
+				d = { "Diagnostics GoTo Prev" },
+				t = { "Prev Todo Comment" },
 			}
 
 			local close_bracket_prefix = {
-				d = { "Diagnostics GoTo Prev" },
-				t = { "Prev Todo Comment" },
+				d = { "Diagnostics GoTo Next" },
+				t = { "Netx Todo Comment" },
 			}
 
 			local no_prefix = {
@@ -105,6 +105,8 @@ return {
 			wk.register(leader_prefix_visual, { prefix = "<leader>", mode = "v" })
 			wk.register(g_prefix, { prefix = "g", mode = "n" })
 			wk.register(b_prefix, { prefix = "b", mode = "n" })
+			wk.register(open_bracket_prefix, { prefix = "[", mode = "n" })
+			wk.register(close_bracket_prefix, { prefix = "]", mode = "n" })
 			wk.register(no_prefix, { mode = "n" })
 		end,
 	},
