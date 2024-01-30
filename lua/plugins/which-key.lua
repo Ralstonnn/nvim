@@ -50,6 +50,13 @@ return {
 					q = { "Trouble Quickfix" },
 					l = { "Trouble Location List" },
 				},
+				s = {
+					n = {
+						name = "Simple Note",
+						l = { "Simple Note List" },
+						c = { "Simple Note Create" },
+					},
+				},
 				["<F5>"] = { "UndoTree Toggle" },
 			}
 
