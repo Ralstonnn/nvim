@@ -10,7 +10,7 @@ return {
 		},
 		config = function()
 			vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", {})
-			vim.keymap.set("n", "<C-S-n>", ":Neotree focus<CR>", {})
+			vim.keymap.set("n", "<C-A-n>", ":Neotree focus<CR>", {})
 
 			local neoTree = require("neo-tree")
 			neoTree.setup({

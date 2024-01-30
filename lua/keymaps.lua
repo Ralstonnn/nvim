@@ -11,10 +11,10 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", {})
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", {})
 
 -- Remap Ctrl-Shift-[hjkl] to change current buffer size
-vim.keymap.set("n", "<C-S-h>", ":vertical resize +5<CR>", {})
-vim.keymap.set("n", "<C-S-l>", ":vertical resize -5<CR>", {})
-vim.keymap.set("n", "<C-S-j>", ":resize -5<CR>", {})
-vim.keymap.set("n", "<C-S-k>", ":resize +5<CR>", {})
+vim.keymap.set("n", "<C-A-h>", ":vertical resize +5<CR>", {})
+vim.keymap.set("n", "<C-A-l>", ":vertical resize -5<CR>", {})
+vim.keymap.set("n", "<C-A-j>", ":resize -5<CR>", {})
+vim.keymap.set("n", "<C-A-k>", ":resize +5<CR>", {})
 
 -- Remap <Leader>-v to vertical split and <Leader-h> to horizontal split
 vim.keymap.set("n", "<leader>v", ":vsp<CR>", {})
@@ -31,5 +31,6 @@ vim.keymap.set("n", "dd", '"_dd', {})
 vim.keymap.set("n", "<S-d><S-d>", "dd", {})
 vim.keymap.set("v", "p", "pgvy", {})
 vim.keymap.set("v", "<S-p>", "p", {})
-vim.keymap.set("v", "<C-y>", '"+y', {})
+vim.keymap.set({ "n", "v" }, "<C-y>", '"+y', {})
+vim.keymap.set({ "n", "v" }, "<C-y><C-y>", '"+yy', {})
 vim.keymap.set({ "n", "v" }, "<C-p>", '"+p', {})

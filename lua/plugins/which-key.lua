@@ -89,16 +89,30 @@ return {
 
 			local open_bracket_prefix = {
 				d = { "Diagnostics GoTo Prev" },
-				t = { "Prev Todo Comment" },
+				t = { "Todo Comment Prev" },
 			}
 
 			local close_bracket_prefix = {
 				d = { "Diagnostics GoTo Next" },
-				t = { "Netx Todo Comment" },
+				t = { "Todo Comment Netx" },
 			}
 
 			local no_prefix = {
 				K = { "LSP Hover" },
+				["<C-k>"] = { "Buffer Split Up" },
+				["<C-j>"] = { "Buffer Split Down" },
+				["<C-h>"] = { "Buffer Split Left" },
+				["<C-l>"] = { "Buffer Split Right" },
+				["<C-A-k>"] = { "Buffer Split Increase" },
+				["<C-A-j>"] = { "Buffer Split Shrink" },
+				["<C-A-h>"] = { "Buffer Split Increase" },
+				["<C-A-l>"] = { "Buffer Split Shrink" },
+				["<C-n>"] = { "Open Neotree" },
+				["<C-A-n>"] = { "Focus Neotree" },
+				["<C-d>"] = { "Move Half-Screen Down" },
+				["<C-u>"] = { "Move Half-Screen Up" },
+				["<C-y>"] = { "Copy To System Clipboard" },
+				["<C-p>"] = { "Paste From System Clipboard" },
 			}
 
 			wk.register(leader_prefix, { prefix = "<leader>", mode = "n" })
