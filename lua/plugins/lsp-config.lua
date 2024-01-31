@@ -15,7 +15,6 @@ return {
 				"cssmodules_ls",
 				"dockerls",
 				"docker_compose_language_service",
-				-- "emmet_ls",
 				"html",
 				"jdtls",
 				"jsonls",
@@ -41,12 +40,12 @@ return {
 				"cssmodules_ls",
 				"docker_compose_language_service",
 				"dockerls",
-				-- "emmet_ls",
 				"html",
 				"jsonls",
 				"tailwindcss",
 				"tsserver",
 				"sqlls",
+				"jedi_language_server",
 			}
 
 			for _, lsp in ipairs(empty_setup_servers) do

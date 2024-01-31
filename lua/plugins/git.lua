@@ -9,7 +9,7 @@ return {
 	{
 		"FabijanZulj/blame.nvim",
 		config = function()
-			vim.keymap.set("n", "<leader>bl", ":ToggleBlame<CR>", {})
+			vim.keymap.set("n", "<leader>gb", ":ToggleBlame<CR>", {})
 		end,
 	},
 	{

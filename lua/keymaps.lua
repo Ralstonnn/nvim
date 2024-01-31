@@ -1,7 +1,7 @@
-vim.keymap.set("n", "<C-q>", ":q<CR>", {})
---vim.keymap.set('n', '<C-Q>', ':q!<CR>', {})
-vim.keymap.set("n", "<C-s>", ":w<CR>", {})
-vim.keymap.set("n", "<C-w>", ":wq<CR>", {})
+vim.keymap.set("n", "<leader>fq", ":q<CR>", {})
+vim.keymap.set("n", "<leader>fQ", ":q!<CR>", {})
+vim.keymap.set("n", "<leader>fs", ":w<CR>", {})
+vim.keymap.set("n", "<leader>fw", ":wq<CR>", {})
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", {})
 
 -- Remap Ctrl-[hjkl] to swap active buffer
@@ -17,8 +17,8 @@ vim.keymap.set("n", "<C-A-j>", ":resize -5<CR>", {})
 vim.keymap.set("n", "<C-A-k>", ":resize +5<CR>", {})
 
 -- Remap <Leader>-v to vertical split and <Leader-h> to horizontal split
-vim.keymap.set("n", "<leader>v", ":vsp<CR>", {})
-vim.keymap.set("n", "<leader>h", ":sp<CR>", {})
+vim.keymap.set("n", "<leader>vs", ":vsp<CR>", {})
+vim.keymap.set("n", "<leader>hs", ":sp<CR>", {})
 
 -- Remap <C-d> and <C-u> to center text
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
