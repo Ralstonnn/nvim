@@ -8,6 +8,7 @@ return {
 		config = true,
 		opts = {
 			ensure_installed = {
+				"emmet_ls",
 				"lua_ls",
 				"clangd",
 				"cmake",
@@ -33,6 +34,7 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local empty_setup_servers = {
+				"emmet_ls",
 				"lua_ls",
 				"clangd",
 				"cmake",
