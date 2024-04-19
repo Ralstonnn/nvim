@@ -14,6 +14,8 @@ return {
 				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 				["<leader>h"] = { name = "[H]arpoon", _ = "which_key_ignore" },
 				["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
+				["<leader>b"] = { name = "[B]ufferLine", _ = "which_key_ignore" },
+				["<leader>bc"] = { name = "[B]ufferLine [C]lose", _ = "which_key_ignore" },
 				["<leader><F5>"] = { name = "UndoTree", _ = "which_key_ignore" },
 			})
 		end,

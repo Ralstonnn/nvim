@@ -11,7 +11,7 @@ return {
 			-- REQUIRED
 
 			vim.keymap.set("n", "<leader>ha", function()
-				harpoon:list():append()
+				harpoon:list():add()
 			end, { desc = "[H]arpoon [A]dd" })
 			vim.keymap.set("n", "<leader>hc", function()
 				harpoon:list():clear()

@@ -12,6 +12,14 @@ return {
 		},
 	},
 	{
+		"FabijanZulj/blame.nvim",
+		config = function()
+			require("blame").setup()
+
+			vim.keymap.set("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "[G]it [B]lame Toggle" })
+		end,
+	},
+	{
 		"kdheepak/lazygit.nvim",
 		-- optional for floating window border decoration
 		dependencies = {
@@ -28,7 +36,7 @@ return {
 			-- OR
 			vim.g.lazygit_config_file_path = {} -- table of custom config file paths
 
-			vim.keymap.set("n", "<leader>gi", ":LazyGit<CR>", {})
+			vim.keymap.set("n", "<leader>gi", ":LazyGit<CR>", { desc = "LazyGit" })
 		end,
 	},
 }

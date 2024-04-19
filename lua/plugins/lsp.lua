@@ -21,33 +21,35 @@ local function onLspAttach(event)
 	map("K", vim.lsp.buf.hover, "Hover Documentation")
 	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-	-- The following two autocommands are used to highlight references of the
-	-- word under your cursor when your cursor rests there for a little while.
-	--    See `:help CursorHold` for information about when this is executed
+	-- -- BUG: WHEN USING VUE AND TSSERVER CAUSES WIERD POPUP ERRORS
+	-- --
+	-- -- The following two autocommands are used to highlight references of the
+	-- -- word under your cursor when your cursor rests there for a little while.
+	-- --    See `:help CursorHold` for information about when this is executed
+	-- --
+	-- -- When you move your cursor, the highlights will be cleared (the second autocommand).
+	-- local client = vim.lsp.get_client_by_id(event.data.client_id)
+	-- if client and client.server_capabilities.documentHighlightProvider then
+	-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	-- 		buffer = event.buf,
+	-- 		callback = vim.lsp.buf.document_highlight,
+	-- 	})
 	--
-	-- When you move your cursor, the highlights will be cleared (the second autocommand).
-	local client = vim.lsp.get_client_by_id(event.data.client_id)
-	if client and client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			buffer = event.buf,
-			callback = vim.lsp.buf.document_highlight,
-		})
+	-- 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+	-- 		buffer = event.buf,
+	-- 		callback = vim.lsp.buf.clear_references,
+	-- 	})
+	-- end
 
-		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-			buffer = event.buf,
-			callback = vim.lsp.buf.clear_references,
-		})
-	end
-
-	-- The following autocommand is used to enable inlay hints in your
-	-- code, if the language server you are using supports them
-	--
-	-- This may be unwanted, since they displace some of your code
-	if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-		map("<leader>th", function()
-			vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
-		end, "[T]oggle Inlay [H]ints")
-	end
+	-- -- The following autocommand is used to enable inlay hints in your
+	-- -- code, if the language server you are using supports them
+	-- --
+	-- -- This may be unwanted, since they displace some of your code
+	-- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+	-- 	map("<leader>th", function()
+	-- 		vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+	-- 	end, "[T]oggle Inlay [H]ints")
+	-- end
 end
 
 return {
@@ -90,14 +92,9 @@ return {
 							},
 						},
 					},
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 				},
-				volar = {
-					init_options = {
-						vue = {
-							hybridMode = false,
-						},
-					},
-				},
+				volar = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -113,6 +110,7 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"prettier",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -125,7 +123,7 @@ return {
 						-- by the server configuration above. Useful when disabling
 						-- certain features of an LSP (for example, turning off formatting for tsserver)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						lspconfig[server_name].setup(server)
 					end,
 				},
 			})
