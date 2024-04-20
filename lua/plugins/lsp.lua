@@ -1,3 +1,30 @@
+local function getMasonTsPath()
+	local mason_registry = require("mason-registry")
+	local ts_path = mason_registry.get_package("typescript-language-server"):get_install_path()
+		.. "/node_modules/typescript/lib"
+	return ts_path
+end
+
+local function getTsPath(root_dir)
+	local util = require("lspconfig.util")
+
+	local global_ts = getMasonTsPath()
+	local found_ts = ""
+
+	local function check_dir(path)
+		found_ts = util.path.join(path, "node_modules", "typescript", "lib")
+		if util.path.exists(found_ts) then
+			return path
+		end
+	end
+
+	if util.search_ancestors(root_dir, check_dir) then
+		return found_ts
+	else
+		return global_ts
+	end
+end
+
 local function getVueTsPluginPathFromMason()
 	local mason_registry = require("mason-registry")
 	local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
@@ -10,12 +37,14 @@ local function onLspAttach(event)
 		vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 	end
 
-	map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-	map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-	map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-	map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+	local telescope_builtin = require("telescope.builtin")
+
+	map("gd", telescope_builtin.lsp_definitions, "[G]oto [D]efinition")
+	map("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
+	map("gI", telescope_builtin.lsp_implementations, "[G]oto [I]mplementation")
+	map("<leader>D", telescope_builtin.lsp_type_definitions, "Type [D]efinition")
+	map("<leader>ds", telescope_builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+	map("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 	map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -92,9 +121,27 @@ return {
 							},
 						},
 					},
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					filetypes = {
+						"typescript",
+						"javascript",
+						"javascriptreact",
+						"typescriptreact",
+						"vue",
+					},
 				},
-				volar = {},
+				volar = {
+					-- filetypes = { --[[ "typescript", "javascript", "javascriptreact", "typescriptreact", ]]
+					-- 	"vue",
+					-- },
+					-- init_options = {
+					-- 	vue = {
+					-- 		hybridMode = false,
+					-- 	},
+					-- },
+					-- on_new_config = function(new_config, new_root_dir)
+					-- 	new_config.init_options.typescript.tsdk = getTsPath(new_root_dir)
+					-- end,
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -105,12 +152,19 @@ return {
 					},
 				},
 				eslint = {},
+				clangd = {
+					apabilities = {
+						offsetEncoding = { "utf-16" },
+					},
+				},
+				cmake = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"prettier",
+				"clang-format",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

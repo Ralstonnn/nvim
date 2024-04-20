@@ -34,6 +34,16 @@ return {
 				javascript = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				vue = { { "prettierd", "prettier" } },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
+			},
+
+			formatters = {
+				["clang-format"] = {
+					prepend_args = {
+						"--style={IndentWidth: 4}",
+					},
+				},
 			},
 		},
 	},
