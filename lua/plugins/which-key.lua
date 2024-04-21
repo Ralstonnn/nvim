@@ -16,6 +16,7 @@ return {
 				["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
 				["<leader>b"] = { name = "[B]ufferLine", _ = "which_key_ignore" },
 				["<leader>bc"] = { name = "[B]ufferLine [C]lose", _ = "which_key_ignore" },
+				["<leader>bm"] = { name = "[B]ufferLine [M]ove", _ = "which_key_ignore" },
 				["<leader><F5>"] = { name = "UndoTree", _ = "which_key_ignore" },
 			})
 		end,

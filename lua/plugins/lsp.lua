@@ -1,29 +1,29 @@
-local function getMasonTsPath()
-	local mason_registry = require("mason-registry")
-	local ts_path = mason_registry.get_package("typescript-language-server"):get_install_path()
-		.. "/node_modules/typescript/lib"
-	return ts_path
-end
-
-local function getTsPath(root_dir)
-	local util = require("lspconfig.util")
-
-	local global_ts = getMasonTsPath()
-	local found_ts = ""
-
-	local function check_dir(path)
-		found_ts = util.path.join(path, "node_modules", "typescript", "lib")
-		if util.path.exists(found_ts) then
-			return path
-		end
-	end
-
-	if util.search_ancestors(root_dir, check_dir) then
-		return found_ts
-	else
-		return global_ts
-	end
-end
+-- local function getMasonTsPath()
+-- 	local mason_registry = require("mason-registry")
+-- 	local ts_path = mason_registry.get_package("typescript-language-server"):get_install_path()
+-- 		.. "/node_modules/typescript/lib"
+-- 	return ts_path
+-- end
+--
+-- local function getTsPath(root_dir)
+-- 	local util = require("lspconfig.util")
+--
+-- 	local global_ts = getMasonTsPath()
+-- 	local found_ts = ""
+--
+-- 	local function check_dir(path)
+-- 		found_ts = util.path.join(path, "node_modules", "typescript", "lib")
+-- 		if util.path.exists(found_ts) then
+-- 			return path
+-- 		end
+-- 	end
+--
+-- 	if util.search_ancestors(root_dir, check_dir) then
+-- 		return found_ts
+-- 	else
+-- 		return global_ts
+-- 	end
+-- end
 
 local function getVueTsPluginPathFromMason()
 	local mason_registry = require("mason-registry")
@@ -108,6 +108,12 @@ return {
 			})
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			-- Set folding capabilities fror ufo
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
+
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
@@ -158,6 +164,7 @@ return {
 					},
 				},
 				cmake = {},
+				cssls = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})

@@ -22,6 +22,8 @@ return {
 			vim.keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "[B]ufferLine [P]revoius" })
 			vim.keymap.set("n", "<leader>bk", ":BufferLinePick<CR>", { desc = "[B]ufferLine Pic[k]" })
 			vim.keymap.set("n", "<leader>btp", ":BufferLineTogglePin<CR>", { desc = "[B]ufferLine [T]oggle [P]in" })
+			vim.keymap.set("n", "<leader>bmn", ":BufferLineMoveNext<CR>", { desc = "[B]ufferLine [M]ove [N]ext" })
+			vim.keymap.set("n", "<leader>bmp", ":BufferLineMovePrev<CR>", { desc = "[B]ufferLine [M]ove [P]revious" })
 			vim.keymap.set("n", "<leader>bck", ":BufferLinePickClose<CR>", { desc = "[B]ufferLine [C]lose Pic[k]" })
 			vim.keymap.set("n", "<leader>bcl", ":BufferLineCloseLeft<CR>", { desc = "[B]ufferLine [C]lose [L]elft" })
 			vim.keymap.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>", { desc = "[B]ufferLine [C]lose [R]ight" })

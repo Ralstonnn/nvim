@@ -34,6 +34,8 @@ return {
 				javascript = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				vue = { { "prettierd", "prettier" } },
+				css = { { "prettierd", "prettier" } },
+				scss = { { "prettierd", "prettier" } },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 			},
