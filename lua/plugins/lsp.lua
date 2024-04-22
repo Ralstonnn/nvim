@@ -50,25 +50,23 @@ local function onLspAttach(event)
 	map("K", vim.lsp.buf.hover, "Hover Documentation")
 	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-	-- -- BUG: WHEN USING VUE AND TSSERVER CAUSES WIERD POPUP ERRORS
-	-- --
-	-- -- The following two autocommands are used to highlight references of the
-	-- -- word under your cursor when your cursor rests there for a little while.
-	-- --    See `:help CursorHold` for information about when this is executed
-	-- --
-	-- -- When you move your cursor, the highlights will be cleared (the second autocommand).
-	-- local client = vim.lsp.get_client_by_id(event.data.client_id)
-	-- if client and client.server_capabilities.documentHighlightProvider then
-	-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-	-- 		buffer = event.buf,
-	-- 		callback = vim.lsp.buf.document_highlight,
-	-- 	})
+	-- The following two autocommands are used to highlight references of the
+	-- word under your cursor when your cursor rests there for a little while.
+	--    See `:help CursorHold` for information about when this is executed
 	--
-	-- 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-	-- 		buffer = event.buf,
-	-- 		callback = vim.lsp.buf.clear_references,
-	-- 	})
-	-- end
+	-- When you move your cursor, the highlights will be cleared (the second autocommand).
+	local client = vim.lsp.get_client_by_id(event.data.client_id)
+	if client and client.server_capabilities.documentHighlightProvider then
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			buffer = event.buf,
+			callback = vim.lsp.buf.document_highlight,
+		})
+
+		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+			buffer = event.buf,
+			callback = vim.lsp.buf.clear_references,
+		})
+	end
 
 	-- -- The following autocommand is used to enable inlay hints in your
 	-- -- code, if the language server you are using supports them
@@ -135,19 +133,7 @@ return {
 						"vue",
 					},
 				},
-				volar = {
-					-- filetypes = { --[[ "typescript", "javascript", "javascriptreact", "typescriptreact", ]]
-					-- 	"vue",
-					-- },
-					-- init_options = {
-					-- 	vue = {
-					-- 		hybridMode = false,
-					-- 	},
-					-- },
-					-- on_new_config = function(new_config, new_root_dir)
-					-- 	new_config.init_options.typescript.tsdk = getTsPath(new_root_dir)
-					-- end,
-				},
+				volar = {},
 				lua_ls = {
 					settings = {
 						Lua = {

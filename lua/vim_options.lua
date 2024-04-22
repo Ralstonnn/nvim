@@ -3,6 +3,9 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
+-- Disable line wrapping
+vim.opt.wrap = false
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
