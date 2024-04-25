@@ -1,6 +1,7 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "windwp/nvim-ts-autotag" },
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = {
@@ -25,7 +26,8 @@ return {
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = true },
+			autotag = { enable = true },
 		},
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`

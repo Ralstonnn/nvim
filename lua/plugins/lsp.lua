@@ -151,6 +151,7 @@ return {
 				},
 				cmake = {},
 				cssls = {},
+				bashls = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -158,6 +159,8 @@ return {
 				"stylua", -- Used to format Lua code
 				"prettier",
 				"clang-format",
+				"jdtls",
+				"beautysh",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

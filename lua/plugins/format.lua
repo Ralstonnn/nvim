@@ -38,6 +38,8 @@ return {
 				scss = { { "prettierd", "prettier" } },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
+				sh = { "beautysh" },
+				bash = { "beautysh" },
 			},
 
 			formatters = {
