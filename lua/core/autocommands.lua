@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- WARNING: Works incorrectly
+-- WARNING: Works incorrectly (Breaks man pages in neovim)
 -- vim.api.nvim_create_autocmd("BufRead", {
 -- 	desc = "Close all unnamed buffers when new buffer in opened",
 -- 	group = vim.api.nvim_create_augroup("clear-unnamed-buffers", { clear = true }),
