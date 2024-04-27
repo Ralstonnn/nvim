@@ -152,6 +152,8 @@ return {
 				cmake = {},
 				cssls = {},
 				bashls = {},
+				emmet_ls = {},
+				tailwindcss = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
