@@ -41,9 +41,19 @@ return {
 			-- renderer = {
 			-- 	group_empty = true,
 			-- },
-			-- filters = {
-			-- 	dotfiles = true,
-			-- },
+			filters = {
+				git_ignored = false,
+			},
+			renderer = {
+				icons = {
+					glyphs = {
+						folder = {
+							arrow_closed = "▼",
+							arrow_open = "▲",
+						},
+					},
+				},
+			},
 			on_attach = on_attach,
 		})
 	end,
