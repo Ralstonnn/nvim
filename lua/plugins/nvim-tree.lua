@@ -44,16 +44,16 @@ return {
 			filters = {
 				git_ignored = false,
 			},
-			renderer = {
-				icons = {
-					glyphs = {
-						folder = {
-							arrow_closed = "▼",
-							arrow_open = "▲",
-						},
-					},
-				},
-			},
+			-- renderer = {
+			-- 	icons = {
+			-- 		glyphs = {
+			-- 			folder = {
+			-- 				arrow_closed = "▼",
+			-- 				arrow_open = "▲",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			on_attach = on_attach,
 		})
 	end,
