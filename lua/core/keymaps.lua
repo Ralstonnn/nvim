@@ -34,15 +34,15 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- close buffers
-local function closeAllBuffersButCurrentOne()
-    local bufs = vim.api.nvim_list_bufs()
-    local current_buf = vim.api.nvim_get_current_buf()
-    for _, i in ipairs(bufs) do
-        if i ~= current_buf then
-            vim.api.nvim_buf_delete(i, {})
-        end
-    end
-end
-keymap.set("n", "<leader>bco", closeAllBuffersButCurrentOne, { desc = "Buffers close all buffers except current" })
+-- local function closeAllBuffersButCurrentOne()
+--     local bufs = vim.api.nvim_list_bufs()
+--     local current_buf = vim.api.nvim_get_current_buf()
+--     for _, i in ipairs(bufs) do
+--         if i ~= current_buf then
+--             vim.api.nvim_buf_delete(i, {})
+--         end
+--     end
+-- end
+-- keymap.set("n", "<leader>bco", closeAllBuffersButCurrentOne, { desc = "Buffers close all buffers except current" })
 keymap.set("n", "<leader>bca", "<cmd>bufdo bdelete<CR>", { desc = "Buffers close all" })
 

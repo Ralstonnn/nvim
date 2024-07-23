@@ -26,7 +26,7 @@ return {
 			vim.keymap.set("n", "<leader>bck", ":BufferLinePickClose<CR>", { desc = "[B]ufferLine [C]lose Pic[k]" })
 			vim.keymap.set("n", "<leader>bcl", ":BufferLineCloseLeft<CR>", { desc = "[B]ufferLine [C]lose [L]elft" })
 			vim.keymap.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>", { desc = "[B]ufferLine [C]lose [R]ight" })
-			-- vim.keymap.set("n", "<leader>bco", ":BufferLineCloseOthers<CR>", { desc = "[B]ufferLine [C]lose [O]thers" })
+			vim.keymap.set("n", "<leader>bco", ":BufferLineCloseOthers<CR>", { desc = "[B]ufferLine [C]lose [O]thers" })
 
 			bufferline.setup({
 				options = {
