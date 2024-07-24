@@ -15,7 +15,7 @@ keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnosti
 --
 -- note: this won't work in all terminal emulators/tmux/etc. try your own mapping
 -- or just use <c-\><c-n> to exit terminal mode
-keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
+-- keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
 
 -- keybinds to make split navigation easier.
 --  use ctrl+<hjkl> to switch between windows
