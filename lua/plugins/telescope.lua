@@ -44,6 +44,17 @@ return {
 						require("telescope.themes").get_dropdown(),
 					},
 				},
+				pickers = {
+					buffers = {
+						show_all_buffers = true,
+						sort_mru = true,
+						mappings = {
+							i = {
+								["<C-d>"] = "delete_buffer",
+							}
+						}
+					},
+				},
 			})
 
 			-- Enable Telescope extensions if they are installed
