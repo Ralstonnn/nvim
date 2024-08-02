@@ -39,12 +39,67 @@ return {
 						]],
 					},
 					{
-						name = "One Dark",
+						name = "One Dark Warmer",
 						colorscheme = "onedark",
+						before = [[
+							require('onedark').setup({
+							    style = "warmer"
+							})
+						]],
 					},
 					{
-						name = "Tokyo Night",
+						name = "One Dark Deep",
+						colorscheme = "onedark",
+						before = [[
+							require('onedark').setup({
+							    style = "deep"
+							})
+						]],
+					},
+					{
+						name = "One Dark Darker",
+						colorscheme = "onedark",
+						before = [[
+							require('onedark').setup({
+							    style = "darker"
+							})
+						]],
+					},
+					{
+						name = "Tokyo Night Night",
 						colorscheme = "tokyonight",
+						before = [[
+							require('tokyonight').setup({
+							    style = "night"
+							})
+						]],
+					},
+					{
+						name = "Tokyo Night Storm",
+						colorscheme = "tokyonight",
+						before = [[
+							require('tokyonight').setup({
+							    style = "storm"
+							})
+						]],
+					},
+					{
+						name = "Tokyo Night Moon",
+						colorscheme = "tokyonight",
+						before = [[
+							require('tokyonight').setup({
+							    style = "moon"
+							})
+						]],
+					},
+					{
+						name = "Tokyo Night Day",
+						colorscheme = "tokyonight",
+						before = [[
+							require('tokyonight').setup({
+							    style = "Day"
+							})
+						]],
 					},
 				}, -- Your list of installed colorschemes.
 				livePreview = true, -- Apply theme while picking. Default to true.

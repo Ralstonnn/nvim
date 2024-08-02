@@ -139,6 +139,7 @@ return {
 					},
 				},
 				volar = {},
+				svelte = {},
 				lua_ls = {
 					settings = {
 						Lua = {
