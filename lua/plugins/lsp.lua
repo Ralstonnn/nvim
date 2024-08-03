@@ -1,30 +1,3 @@
--- local function getMasonTsPath()
--- 	local mason_registry = require("mason-registry")
--- 	local ts_path = mason_registry.get_package("typescript-language-server"):get_install_path()
--- 		.. "/node_modules/typescript/lib"
--- 	return ts_path
--- end
---
--- local function getTsPath(root_dir)
--- 	local util = require("lspconfig.util")
---
--- 	local global_ts = getMasonTsPath()
--- 	local found_ts = ""
---
--- 	local function check_dir(path)
--- 		found_ts = util.path.join(path, "node_modules", "typescript", "lib")
--- 		if util.path.exists(found_ts) then
--- 			return path
--- 		end
--- 	end
---
--- 	if util.search_ancestors(root_dir, check_dir) then
--- 		return found_ts
--- 	else
--- 		return global_ts
--- 	end
--- end
-
 local function getVueTsPluginPathFromMason()
 	local mason_registry = require("mason-registry")
 	local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
