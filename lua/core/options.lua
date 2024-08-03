@@ -3,6 +3,8 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
+vim.opt.termguicolors = true
+
 -- Disable line wrapping
 vim.opt.wrap = false
 
