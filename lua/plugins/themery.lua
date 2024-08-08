@@ -97,7 +97,7 @@ return {
 						colorscheme = "tokyonight",
 						before = [[
 							require('tokyonight').setup({
-							    style = "Day"
+							    style = "day"
 							})
 						]],
 					},
