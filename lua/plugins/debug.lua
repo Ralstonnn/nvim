@@ -1,6 +1,6 @@
 local function getLldbPath()
 	local mason_registry = require("mason-registry")
-	local path = mason_registry.get_package("codelldb"):get_install_path()
+	local path = mason_registry.get_package("codelldb"):get_install_path() .. "/codelldb"
 	return path
 end
 return {
@@ -60,37 +60,28 @@ return {
 				widgets.centered_float(widgets.scopes)
 			end, { desc = "Debug Widgets Scopes" })
 
-			dap.adapters.lldb = {
-				type = "executable",
-				-- command = "/opt/homebrew/opt/llvm/bin", -- adjust as needed, must be absolute path
-				command = getLldbPath(),
-				name = "lldb",
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = getLldbPath(),
+					args = { "--port", "${port}" },
+
+					-- On windows you may have to uncomment this:
+					-- detached = false,
+				},
 			}
 
 			dap.configurations.c = {
 				{
-					name = "Launch",
-					type = "lldb",
+					name = "Launch file",
+					type = "codelldb",
 					request = "launch",
 					program = function()
 						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 					end,
 					cwd = "${workspaceFolder}",
 					stopOnEntry = false,
-					args = { "-h" },
-
-					-- 💀
-					-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-					--
-					--    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-					--
-					-- Otherwise you might get the following error:
-					--
-					--    Error on launch: Failed to attach to the target process
-					--
-					-- But you should be aware of the implications:
-					-- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-					runInTerminal = false,
 				},
 			}
 
@@ -106,6 +97,8 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
+
+			dap.set_log_level("TRACE")
 		end,
 	},
 }
