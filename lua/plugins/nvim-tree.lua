@@ -35,7 +35,7 @@ return {
 			-- 	sorter = "case_sensitive",
 			-- },
 			view = {
-				width = 45,
+				width = 50,
 				relativenumber = true,
 			},
 			-- renderer = {
@@ -43,6 +43,9 @@ return {
 			-- },
 			filters = {
 				git_ignored = false,
+			},
+			git = {
+				timeout = 4000,
 			},
 			-- renderer = {
 			-- 	icons = {
