@@ -23,10 +23,12 @@ keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnosti
 --  use ctrl+<hjkl> to switch between windows
 --
 --  see `:help wincmd` for a list of all window commands
-keymap.set("n", "<c-h>", "<c-w><c-h>", { desc = "move focus to the left window" })
-keymap.set("n", "<c-l>", "<c-w><c-l>", { desc = "move focus to the right window" })
-keymap.set("n", "<c-j>", "<c-w><c-j>", { desc = "move focus to the lower window" })
-keymap.set("n", "<c-k>", "<c-w><c-k>", { desc = "move focus to the upper window" })
+--  NOTE: Now using TmuxNavigate plugin 
+--	  If removed uncomment this keymaps to switch windows with vim keys
+-- keymap.set("n", "<c-h>", "<c-w><c-h>", { desc = "move focus to the left window" })
+-- keymap.set("n", "<c-l>", "<c-w><c-l>", { desc = "move focus to the right window" })
+-- keymap.set("n", "<c-j>", "<c-w><c-j>", { desc = "move focus to the lower window" })
+-- keymap.set("n", "<c-k>", "<c-w><c-k>", { desc = "move focus to the upper window" })
 
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
