@@ -32,11 +32,21 @@ return {
 					{
 						name = "Catppuccin Mocha",
 						colorscheme = "catppuccin",
-						after = [[
+						before = [[
 							require("catppuccin").setup({
 								flavour = "mocha",
-							})
-						]],
+								})
+							]],
+					},
+					{
+						name = "Catppuccin Transparent",
+						colorscheme = "catppuccin",
+						before = [[
+							require("catppuccin").setup({
+								flavour = "mocha",
+								transparent_background = true,
+								})
+							]],
 					},
 					{
 						name = "One Dark Warmer",
