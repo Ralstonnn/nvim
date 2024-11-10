@@ -142,6 +142,7 @@ return {
 				"clang-format",
 				"jdtls",
 				"beautysh",
+				"cpptools", -- C, CPP, RUST DAP
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
