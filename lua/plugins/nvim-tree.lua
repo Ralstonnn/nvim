@@ -28,6 +28,7 @@ return {
 
 		vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { desc = "Nvim-Tree Toggle" })
 		vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Nvim-Tree Collapse" })
+		vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>", { desc = "Nvim-Tree Focus" })
 
 		-- OR setup with some options
 		require("nvim-tree").setup({
