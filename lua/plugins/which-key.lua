@@ -17,6 +17,7 @@ return {
 				{ "<leader>h", group = "[H]arpoon" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
+				{ "<leader>sd", group = "[S]earch inside [D]irectory" },
 				{ "<leader>w", group = "[W]orkspace" },
 			})
 		end,
