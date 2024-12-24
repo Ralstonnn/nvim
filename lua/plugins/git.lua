@@ -16,7 +16,16 @@ return {
 				current_line_blame = true,
 			})
 
-			vim.keymap.set("n", "<leader>gs", "<cmd>Gitsigns<CR>", { desc = "[G]it [S]signs Toggle" })
+			vim.keymap.set("n", "<leader>gss", "<cmd>Gitsigns<CR>", { desc = "[G]it [S]signs Toggle" })
+			vim.keymap.set("n", "<leader>gsn", "<cmd>Gitsigns next_hunk<CR>", { desc = "[G]it [S]signs Next Hunk" })
+			vim.keymap.set("n", "<leader>gsu", "<cmd>Gitsigns prev_hunk<CR>", { desc = "[G]it [S]signs Previous Hunk" })
+			vim.keymap.set(
+				"n",
+				"<leader>gsp",
+				"<cmd>Gitsigns preview_hunk<CR>",
+				{ desc = "[G]it [S]signs [P]review Hunk" }
+			)
+			vim.keymap.set("n", "<leader>gsd", "<cmd>Gitsigns diffthis<CR>", { desc = "[G]it [S]signs [D]iff" })
 		end,
 	},
 	{
