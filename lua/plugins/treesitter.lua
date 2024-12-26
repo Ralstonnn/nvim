@@ -1,7 +1,10 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "windwp/nvim-ts-autotag" },
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+			"nvim-treesitter/nvim-treesitter-context",
+		},
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = {
@@ -34,6 +37,7 @@ return {
 
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup(opts)
+			require("treesitter-context").setup({ enable = true })
 
 			-- There are additional nvim-treesitter modules that you can use to interact
 			-- with nvim-treesitter. You should go explore a few and see what interests you:
