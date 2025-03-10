@@ -83,6 +83,12 @@ return {
 				callback = onLspAttach,
 			})
 
+			-- Associate pcss files with css
+			vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+				pattern = "*.pcss",
+				command = "set filetype=css",
+			})
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			-- Set folding capabilities fror ufo
 			capabilities.textDocument.foldingRange = {
@@ -143,6 +149,7 @@ return {
 				"jdtls",
 				"beautysh",
 				"cpptools", -- C, CPP, RUST DAP
+				"eslint_d",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

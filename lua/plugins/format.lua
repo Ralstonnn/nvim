@@ -31,11 +31,11 @@ return {
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
-				javascript = { "prettierd", "eslint" },
-				typescript = { "prettierd", "eslint" },
-				vue = { "prettierd", "eslint" },
-				css = { "prettierd", "eslint" },
-				scss = { "prettierd", "eslint" },
+				javascript = { "prettierd", "eslint_d" },
+				typescript = { "prettierd", "eslint_d" },
+				vue = { "prettierd", "eslint_d" },
+				css = { "prettierd", "eslint_d" },
+				scss = { "prettierd", "eslint_d" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				sh = { "beautysh" },
