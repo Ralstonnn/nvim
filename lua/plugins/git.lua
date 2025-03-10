@@ -26,13 +26,7 @@ return {
 				{ desc = "[G]it [S]signs [P]review Hunk" }
 			)
 			vim.keymap.set("n", "<leader>gsd", "<cmd>Gitsigns diffthis<CR>", { desc = "[G]it [S]signs [D]iff" })
-		end,
-	},
-	{
-		"FabijanZulj/blame.nvim",
-		config = function()
-			require("blame").setup()
-			vim.keymap.set("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "[G]it [B]lame Toggle" })
+			vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "[G]it [B]lame Toggle" })
 		end,
 	},
 	{
