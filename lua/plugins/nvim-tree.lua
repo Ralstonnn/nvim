@@ -13,12 +13,24 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 end
 
+local function findFileInNvimTree()
+	local nvimTreeView = require("nvim-tree.view")
+
+	if nvimTreeView.is_visible then
+		vim.cmd("NvimTreeFindFile")
+	else
+		vim.cmd("NvimTreeFindFileToggle")
+	end
+end
+
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependecies = {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
+		local nvimTree = require("nvim-tree")
+
 		-- disable netrw at the very start of your init.lua
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
@@ -27,11 +39,12 @@ return {
 		vim.opt.termguicolors = true
 
 		vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { desc = "Nvim-Tree Toggle" })
-		vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Nvim-Tree Collapse" })
-		vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>", { desc = "Nvim-Tree Focus" })
+		-- vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Nvim-Tree Collapse" })
+		-- vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>", { desc = "Nvim-Tree Focus" })
+		vim.keymap.set("n", "<leader>nf", findFileInNvimTree, { desc = "Nvim-Tree Find File" })
 
 		-- OR setup with some options
-		require("nvim-tree").setup({
+		nvimTree.setup({
 			-- sort = {
 			-- 	sorter = "case_sensitive",
 			-- },
