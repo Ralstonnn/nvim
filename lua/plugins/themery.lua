@@ -4,6 +4,9 @@ return {
 		config = function()
 			require("themery").setup({
 				themes = {
+					-- ********************************************************************************
+					-- GRUVBOX
+					-- ********************************************************************************
 					{
 						name = "Gruvbox Original Dark",
 						colorscheme = "gruvbox-material",
@@ -25,10 +28,18 @@ return {
 							vim.g.gruvbox_material_foreground = "mix"
 						]],
 					},
+
+					-- ********************************************************************************
+					-- ROSE PINE
+					-- ********************************************************************************
 					{
 						name = "Rose Pine Dark",
 						colorscheme = "rose-pine",
 					},
+
+					-- ********************************************************************************
+					-- CATPPUCCIN
+					-- ********************************************************************************
 					{
 						name = "Catppuccin Mocha",
 						colorscheme = "catppuccin",
@@ -48,33 +59,100 @@ return {
 								})
 							]],
 					},
+
+					-- ********************************************************************************
+					-- ONE DARK PRO
+					-- ********************************************************************************
 					{
-						name = "One Dark Warmer",
-						colorscheme = "onedark",
+						name = "One Dark Pro Light",
+						colorscheme = "onelight",
 						before = [[
-							require('onedark').setup({
-							    style = "warmer"
-							})
+							require('onedarkpro').setup({})
 						]],
 					},
 					{
-						name = "One Dark Deep",
+						name = "One Dark Pro",
 						colorscheme = "onedark",
 						before = [[
-							require('onedark').setup({
-							    style = "deep"
-							})
+							require('onedarkpro').setup({})
 						]],
 					},
 					{
-						name = "One Dark Darker",
-						colorscheme = "onedark",
+						name = "One Dark Pro Vivid",
+						colorscheme = "onedark_vivid",
 						before = [[
-							require('onedark').setup({
-							    style = "darker"
-							})
+							require('onedarkpro').setup({})
 						]],
 					},
+					{
+						name = "One Dark Pro Dark",
+						colorscheme = "onedark_dark",
+						before = [[
+							require('onedarkpro').setup({})
+						]],
+					},
+
+					-- ********************************************************************************
+					-- ONE DARK
+					-- ********************************************************************************
+					-- {
+					-- 	name = "One Dark Warm",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "warm"
+					-- 		})
+					-- 	]],
+					-- },
+					-- {
+					-- 	name = "One Dark Warmer",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "warmer"
+					-- 		})
+					-- 	]],
+					-- },
+					-- {
+					-- 	name = "One Dark Cool",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "cool"
+					-- 		})
+					-- 	]],
+					-- },
+					-- {
+					-- 	name = "One Dark Deep",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "deep"
+					-- 		})
+					-- 	]],
+					-- },
+					-- {
+					-- 	name = "One Dark Dark",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "dark"
+					-- 		})
+					-- 	]],
+					-- },
+					-- {
+					-- 	name = "One Dark Darker",
+					-- 	colorscheme = "onedark",
+					-- 	before = [[
+					-- 		require('onedark').setup({
+					-- 		    style = "darker"
+					-- 		})
+					-- 	]],
+					-- },
+
+					-- ********************************************************************************
+					-- TOKYO NIGHT
+					-- ********************************************************************************
 					{
 						name = "Tokyo Night Night",
 						colorscheme = "tokyonight",
@@ -117,7 +195,8 @@ return {
 		end,
 	},
 	"folke/tokyonight.nvim",
-	"navarasu/onedark.nvim",
+	-- "navarasu/onedark.nvim",
+	"olimorris/onedarkpro.nvim",
 	"sainnhe/gruvbox-material",
 	"rose-pine/neovim",
 	"catppuccin/nvim",
