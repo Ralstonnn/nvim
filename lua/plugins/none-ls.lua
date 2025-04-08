@@ -1,6 +1,6 @@
 local cspellConfig = {
 	config_file_preferred_name = "cspell.json",
-	cspell_config_dirs = { "~/.config/cspell/" },
+	cspell_config_dirs = { "~/.config/cspell/", "~/.local/share/cspell" },
 }
 return {
 	"nvimtools/none-ls.nvim",
