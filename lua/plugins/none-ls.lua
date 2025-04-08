@@ -1,3 +1,7 @@
+local cspellConfig = {
+	config_file_preferred_name = "cspell.json",
+	cspell_config_dirs = { "~/.config/cspell/" },
+}
 return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
@@ -14,8 +18,11 @@ return {
 					diagnostics_postprocess = function(diagnostic)
 						diagnostic.severity = vim.diagnostic.severity.HINT
 					end,
+					config = cspellConfig,
 				}),
-				cspell.code_actions,
+				cspell.code_actions.with({
+					config = cspellConfig,
+				}),
 			},
 		})
 	end,
