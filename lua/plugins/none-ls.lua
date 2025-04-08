@@ -10,7 +10,12 @@ return {
 
 		null_ls.setup({
 			sources = {
-				cspell.diagnostics,
+				cspell.diagnostics.with({
+					diagnostics_postprocess = function(diagnostic)
+						diagnostic.severity = vim.diagnostic.severity.HINT
+					end,
+				}),
+				cspell.code_actions,
 			},
 		})
 	end,
