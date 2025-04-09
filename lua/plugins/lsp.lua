@@ -118,32 +118,6 @@ return {
 						"typescriptreact",
 						"vue",
 					},
-					settings = {
-						typescript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-						javascript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-					},
 				},
 				volar = {},
 				svelte = {},
@@ -175,6 +149,7 @@ return {
 				"prettierd",
 				"clang-format",
 				"jdtls",
+				"java-debug-adapter",
 				"beautysh",
 				"cpptools", -- C, CPP, RUST DAP
 				"eslint_d",
