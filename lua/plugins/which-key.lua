@@ -22,7 +22,7 @@ return {
 				{ "<leader>sd", group = "[S]earch inside [D]irectory" },
 				{ "<leader>S", group = "[S]essio" },
 				{ "<leader>t", group = "[T]abs" },
-				{ "<leader>w", group = "[W]orkspace" },
+				{ "<leader>l", group = "[L]sp" },
 			})
 		end,
 	},
