@@ -23,6 +23,7 @@ return {
 				{ "<leader>S", group = "[S]essio" },
 				{ "<leader>t", group = "[T]abs" },
 				{ "<leader>l", group = "[L]sp" },
+				{ "<leader>o", group = "[O]verseer" },
 			})
 		end,
 	},
