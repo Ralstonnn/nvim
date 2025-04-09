@@ -13,6 +13,7 @@ return {
 				{ "<leader>bm", group = "[B]ufferLine [M]ove" },
 				{ "<leader>c", group = "[C]ode" },
 				{ "<leader>d", group = "[D]ebugger" },
+				{ "<leader>du", group = "[D]ap UI" },
 				{ "<leader>n", group = "[N]vim tree" },
 				{ "<leader>g", group = "[G]it" },
 				{ "<leader>h", group = "[H]arpoon" },
