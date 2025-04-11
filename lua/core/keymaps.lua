@@ -6,8 +6,12 @@ keymap.set("n", "<c-d>", "<c-d>zz")
 keymap.set("n", "<c-u>", "<c-u>zz")
 
 -- diagnostic keymaps
-keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previous [d]iagnostic message" })
-keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next [d]iagnostic message" })
+keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "go to previous [d]iagnostic message" })
+keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "go to next [d]iagnostic message" })
 keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic [e]rror messages" })
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic [q]uickfix list" })
 
@@ -23,7 +27,7 @@ keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnosti
 --  use ctrl+<hjkl> to switch between windows
 --
 --  see `:help wincmd` for a list of all window commands
---  NOTE: Now using TmuxNavigate plugin 
+--  NOTE: Now using TmuxNavigate plugin
 --	  If removed uncomment this keymaps to switch windows with vim keys
 -- keymap.set("n", "<c-h>", "<c-w><c-h>", { desc = "move focus to the left window" })
 -- keymap.set("n", "<c-l>", "<c-w><c-l>", { desc = "move focus to the right window" })
@@ -36,6 +40,10 @@ keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+keymap.set("n", "<leader>td", "<cmd>tabonly<CR>", { desc = "Close all tabs except current" })
+-- Works with bufferline
+keymap.set("n", "<leader>tss", "<cmd>BufferLinePick<CR>", { desc = "Pick a tab" })
+keymap.set("n", "<leader>tsc", "<cmd>BufferLinePickClose<CR>", { desc = "Pick a tab to close" })
 
 -- close buffers
 -- local function closeAllBuffersButCurrentOne()
@@ -49,4 +57,3 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- end
 -- keymap.set("n", "<leader>bco", closeAllBuffersButCurrentOne, { desc = "Buffers close all buffers except current" })
 keymap.set("n", "<leader>bca", "<cmd>bufdo bdelete<CR>", { desc = "Buffers close all" })
-
