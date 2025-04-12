@@ -51,16 +51,16 @@ return {
       git = {
         timeout = 4000,
       },
-      -- renderer = {
-      -- 	icons = {
-      -- 		glyphs = {
-      -- 			folder = {
-      -- 				arrow_closed = "▼",
-      -- 				arrow_open = "▲",
-      -- 			},
-      -- 		},
-      -- 	},
-      -- },
+      renderer = {
+      	icons = {
+      		glyphs = {
+      			folder = {
+      				arrow_closed = "▼",
+      				arrow_open = "▲",
+      			},
+      		},
+      	},
+      },
       on_attach = on_attach,
     })
   end,
