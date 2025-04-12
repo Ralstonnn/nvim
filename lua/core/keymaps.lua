@@ -7,10 +7,10 @@ keymap.set("n", "<c-u>", "<c-u>zz")
 
 -- diagnostic keymaps
 keymap.set("n", "[d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+  vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "go to previous [d]iagnostic message" })
 keymap.set("n", "]d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+  vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "go to next [d]iagnostic message" })
 keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic [e]rror messages" })
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic [q]uickfix list" })

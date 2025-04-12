@@ -1,67 +1,67 @@
 local function on_attach(bufnr)
-	local api = require("nvim-tree.api")
+  local api = require("nvim-tree.api")
 
-	local function opts(desc)
-		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-	end
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
 
-	-- default mappings
-	api.config.mappings.default_on_attach(bufnr)
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
 
-	-- custom mappings
-	-- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
-	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+  -- custom mappings
+  -- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
+  vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 end
 
 return {
-	"nvim-tree/nvim-tree.lua",
-	dependecies = {
-		"nvim-tree/nvim-web-devicons",
-	},
-	config = function()
-		local nvimTree = require("nvim-tree")
+  "nvim-tree/nvim-tree.lua",
+  dependecies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    local nvimTree = require("nvim-tree")
 
-		-- disable netrw at the very start of your init.lua
-		vim.g.loaded_netrw = 1
-		vim.g.loaded_netrwPlugin = 1
+    -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
 
-		-- optionally enable 24-bit colour
-		vim.opt.termguicolors = true
+    -- optionally enable 24-bit colour
+    vim.opt.termguicolors = true
 
-		vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { desc = "Nvim-Tree Toggle" })
-		-- vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Nvim-Tree Collapse" })
-		-- vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>", { desc = "Nvim-Tree Focus" })
-		vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { desc = "Nvim-Tree Find File" })
+    vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { desc = "Nvim-Tree Toggle" })
+    -- vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Nvim-Tree Collapse" })
+    -- vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>", { desc = "Nvim-Tree Focus" })
+    vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { desc = "Nvim-Tree Find File" })
 
-		-- OR setup with some options
-		nvimTree.setup({
-			-- sort = {
-			-- 	sorter = "case_sensitive",
-			-- },
-			view = {
-				width = 50,
-				relativenumber = true,
-			},
-			-- renderer = {
-			-- 	group_empty = true,
-			-- },
-			filters = {
-				git_ignored = false,
-			},
-			git = {
-				timeout = 4000,
-			},
-			-- renderer = {
-			-- 	icons = {
-			-- 		glyphs = {
-			-- 			folder = {
-			-- 				arrow_closed = "▼",
-			-- 				arrow_open = "▲",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
-			on_attach = on_attach,
-		})
-	end,
+    -- OR setup with some options
+    nvimTree.setup({
+      -- sort = {
+      -- 	sorter = "case_sensitive",
+      -- },
+      view = {
+        width = 50,
+        relativenumber = true,
+      },
+      -- renderer = {
+      -- 	group_empty = true,
+      -- },
+      filters = {
+        git_ignored = false,
+      },
+      git = {
+        timeout = 4000,
+      },
+      -- renderer = {
+      -- 	icons = {
+      -- 		glyphs = {
+      -- 			folder = {
+      -- 				arrow_closed = "▼",
+      -- 				arrow_open = "▲",
+      -- 			},
+      -- 		},
+      -- 	},
+      -- },
+      on_attach = on_attach,
+    })
+  end,
 }
