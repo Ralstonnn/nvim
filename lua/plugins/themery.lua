@@ -13,22 +13,22 @@ return {
             name = "Gruvbox Original Dark",
             colorscheme = "gruvbox-material",
             before = [[
-							vim.g.gruvbox_material_foreground = "original"
-						]],
+              vim.g.gruvbox_material_foreground = "original"
+            ]],
           },
           {
             name = "Gruvbox Material Dark",
             colorscheme = "gruvbox-material",
             before = [[
-							vim.g.gruvbox_material_foreground = "material"
-						]],
+              vim.g.gruvbox_material_foreground = "material"
+            ]],
           },
           {
             name = "Gruvbox Mix Dark",
             colorscheme = "gruvbox-material",
             before = [[
-							vim.g.gruvbox_material_foreground = "mix"
-						]],
+              vim.g.gruvbox_material_foreground = "mix"
+            ]],
           },
 
           -- ********************************************************************************
@@ -46,20 +46,20 @@ return {
             name = "Catppuccin Mocha",
             colorscheme = "catppuccin",
             before = [[
-							require("catppuccin").setup({
-								flavour = "mocha",
-								})
-							]],
+              require("catppuccin").setup({
+                flavour = "mocha",
+              })
+            ]],
           },
           {
             name = "Catppuccin Transparent",
             colorscheme = "catppuccin",
             before = [[
-							require("catppuccin").setup({
-								flavour = "mocha",
-								transparent_background = true,
-								})
-							]],
+              require("catppuccin").setup({
+                flavour = "mocha",
+                transparent_background = true,
+              })
+            ]],
           },
 
           -- ********************************************************************************
@@ -69,29 +69,29 @@ return {
             name = "One Dark Pro Light",
             colorscheme = "onelight",
             before = [[
-							require('onedarkpro').setup({})
-						]],
+              require('onedarkpro').setup({})
+            ]],
           },
           {
             name = "One Dark Pro",
             colorscheme = "onedark",
             before = [[
-							require('onedarkpro').setup({})
-						]],
+              require('onedarkpro').setup({})
+            ]],
           },
           {
             name = "One Dark Pro Vivid",
             colorscheme = "onedark_vivid",
             before = [[
-							require('onedarkpro').setup({})
-						]],
+              require('onedarkpro').setup({})
+            ]],
           },
           {
             name = "One Dark Pro Dark",
             colorscheme = "onedark_dark",
             before = [[
-							require('onedarkpro').setup({})
-						]],
+              require('onedarkpro').setup({})
+            ]],
           },
 
           -- ********************************************************************************
@@ -159,37 +159,37 @@ return {
             name = "Tokyo Night Night",
             colorscheme = "tokyonight",
             before = [[
-							require('tokyonight').setup({
-							    style = "night"
-							})
-						]],
+              require('tokyonight').setup({
+                style = "night"
+              })
+            ]],
           },
           {
             name = "Tokyo Night Storm",
             colorscheme = "tokyonight",
             before = [[
-							require('tokyonight').setup({
-							    style = "storm"
-							})
-						]],
+              require('tokyonight').setup({
+                style = "storm"
+              })
+            ]],
           },
           {
             name = "Tokyo Night Moon",
             colorscheme = "tokyonight",
             before = [[
-							require('tokyonight').setup({
-							    style = "moon"
-							})
-						]],
+              require('tokyonight').setup({
+                style = "moon"
+              })
+            ]],
           },
           {
             name = "Tokyo Night Day",
             colorscheme = "tokyonight",
             before = [[
-							require('tokyonight').setup({
-							    style = "day"
-							})
-						]],
+              require('tokyonight').setup({
+                style = "day"
+              })
+            ]],
           },
         }, -- Your list of installed colorschemes.
         livePreview = true, -- Apply theme while picking. Default to true.
