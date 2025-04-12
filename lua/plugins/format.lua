@@ -41,14 +41,6 @@ return {
         sh = { "beautysh" },
         bash = { "beautysh" },
       },
-
-      formatters = {
-        ["clang-format"] = {
-          prepend_args = {
-            "--style={IndentWidth: 4}",
-          },
-        },
-      },
     },
   },
 }
