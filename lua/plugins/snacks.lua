@@ -7,12 +7,27 @@ return {
     input = {
       enabled = true,
     },
+    image = {
+      enabled = true,
+    },
+    notifier = {
+      enabled = true,
+    },
     styles = {
       input = {
         relative = "cursor",
         row = -3,
         col = 0,
       },
+    },
+  },
+  keys = {
+    {
+      "<leader>rf",
+      function()
+        Snacks.rename.rename_file()
+      end,
+      desc = "Rename File",
     },
   },
 }
