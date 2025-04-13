@@ -20,6 +20,9 @@ return {
         col = 0,
       },
     },
+    gitbrowse = {
+      enabled = true,
+    },
   },
   keys = {
     {
@@ -28,6 +31,14 @@ return {
         Snacks.rename.rename_file()
       end,
       desc = "Rename File",
+    },
+    {
+      "<leader>gB",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "Git Browse",
+      mode = { "n", "v" },
     },
   },
 }
