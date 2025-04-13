@@ -2,6 +2,7 @@ local cspellConfig = {
   config_file_preferred_name = "cspell.json",
   cspell_config_dirs = { "~/.config/cspell/", "~/.local/share/cspell" },
 }
+
 return {
   "nvimtools/none-ls.nvim",
   dependencies = {
@@ -16,7 +17,7 @@ return {
       sources = {
         cspell.diagnostics.with({
           diagnostics_postprocess = function(diagnostic)
-            diagnostic.severity = vim.diagnostic.severity.HINT
+            diagnostic.severity = vim.diagnostic.severity.INFO
           end,
           config = cspellConfig,
         }),
