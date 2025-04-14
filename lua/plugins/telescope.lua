@@ -6,6 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       "princejoogie/dir-telescope.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
       {
         -- If encountering errors, see telescope-fzf-native README for installation instructions
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -24,9 +25,11 @@ return {
       { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
     config = function()
+      local telescope = require("telescope")
+
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require("telescope").setup({
+      telescope.setup({
         defaults = {
           path_display = { "smart" },
           mappings = {
@@ -55,9 +58,10 @@ return {
       })
 
       -- Enable Telescope extensions if they are installed
-      pcall(require("telescope").load_extension, "fzf")
-      pcall(require("telescope").load_extension, "ui-select")
-      pcall(require("telescope").load_extension, "dir")
+      pcall(telescope.load_extension, "fzf")
+      pcall(telescope.load_extension, "ui-select")
+      pcall(telescope.load_extension, "dir")
+      pcall(telescope.load_extension, "live_grep_args")
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
@@ -68,7 +72,7 @@ return {
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "[S]earch [S]ymbols" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+      vim.keymap.set("n", "<leader>sg", extensions.live_grep_args.live_grep_args, { desc = "[S]earch by [G]rep" })
       vim.keymap.set("n", "<leader>se", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
       vim.keymap.set("n", "<leader>sdg", extensions.dir.live_grep, { desc = "[S]earch inside [D]irectory [G]reg" })
       vim.keymap.set("n", "<leader>sdf", extensions.dir.find_files, { desc = "[S]earch inside [D]irectory [F]iles" })
