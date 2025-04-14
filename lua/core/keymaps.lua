@@ -2,8 +2,8 @@ local keymap = vim.keymap
 
 keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 keymap.set("i", "jj", "<esc>")
-keymap.set("n", "<c-d>", "<c-d>zz")
-keymap.set("n", "<c-u>", "<c-u>zz")
+-- keymap.set("n", "<c-d>", "<c-d>zz")
+-- keymap.set("n", "<c-u>", "<c-u>zz")
 
 -- diagnostic keymaps
 keymap.set("n", "[d", function()
