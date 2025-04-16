@@ -21,7 +21,7 @@ keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnosti
 --
 -- note: this won't work in all terminal emulators/tmux/etc. try your own mapping
 -- or just use <c-\><c-n> to exit terminal mode
--- keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
+keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
 
 -- keybinds to make split navigation easier.
 --  use ctrl+<hjkl> to switch between windows
@@ -33,6 +33,16 @@ keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnosti
 -- keymap.set("n", "<c-l>", "<c-w><c-l>", { desc = "move focus to the right window" })
 -- keymap.set("n", "<c-j>", "<c-w><c-j>", { desc = "move focus to the lower window" })
 -- keymap.set("n", "<c-k>", "<c-w><c-k>", { desc = "move focus to the upper window" })
+-- Resize panes
+keymap.set("n", "<c-left>", "<cmd>vertical resize -2<CR>", { desc = "decrease pane width" })
+keymap.set("n", "<c-right>", "<cmd>vertical resize +2<CR>", { desc = "increase pane width" })
+keymap.set("n", "<c-down>", "<cmd>resize -2<CR>", { desc = "decrease pane height" })
+keymap.set("n", "<c-up>", "<cmd>resize +2<CR>", { desc = "increase pane height" })
+-- Resize panes backup
+keymap.set('n', '<c-a-h>', '<cmd>vertical resize -2<CR>', {desc = "decrease pane width"})
+keymap.set('n', '<c-a-l>', '<cmd>vertical resize +2<CR>', {desc = "increase pane width"})
+keymap.set('n', '<c-a-j>', '<cmd>resize -2<CR>', {desc = "decrease pane height"})
+keymap.set('n', '<c-a-k>', '<cmd>resize +2<CR>', {desc = "increase pane height"})
 
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
