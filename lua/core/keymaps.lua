@@ -34,15 +34,15 @@ keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
 -- keymap.set("n", "<c-j>", "<c-w><c-j>", { desc = "move focus to the lower window" })
 -- keymap.set("n", "<c-k>", "<c-w><c-k>", { desc = "move focus to the upper window" })
 -- Resize panes
-keymap.set("n", "<c-left>", "<cmd>vertical resize -2<CR>", { desc = "decrease pane width" })
-keymap.set("n", "<c-right>", "<cmd>vertical resize +2<CR>", { desc = "increase pane width" })
-keymap.set("n", "<c-down>", "<cmd>resize -2<CR>", { desc = "decrease pane height" })
-keymap.set("n", "<c-up>", "<cmd>resize +2<CR>", { desc = "increase pane height" })
+keymap.set("n", "<c-left>", "<cmd>vertical resize -5<CR>", { desc = "decrease pane width" })
+keymap.set("n", "<c-right>", "<cmd>vertical resize +5<CR>", { desc = "increase pane width" })
+keymap.set("n", "<c-down>", "<cmd>resize -5<CR>", { desc = "decrease pane height" })
+keymap.set("n", "<c-up>", "<cmd>resize +5<CR>", { desc = "increase pane height" })
 -- Resize panes backup
-keymap.set('n', '<c-a-h>', '<cmd>vertical resize -2<CR>', {desc = "decrease pane width"})
-keymap.set('n', '<c-a-l>', '<cmd>vertical resize +2<CR>', {desc = "increase pane width"})
-keymap.set('n', '<c-a-j>', '<cmd>resize -2<CR>', {desc = "decrease pane height"})
-keymap.set('n', '<c-a-k>', '<cmd>resize +2<CR>', {desc = "increase pane height"})
+keymap.set('n', '<c-a-h>', '<cmd>vertical resize -5<CR>', {desc = "decrease pane width"})
+keymap.set('n', '<c-a-l>', '<cmd>vertical resize +5<CR>', {desc = "increase pane width"})
+keymap.set('n', '<c-a-j>', '<cmd>resize -5<CR>', {desc = "decrease pane height"})
+keymap.set('n', '<c-a-k>', '<cmd>resize +5<CR>', {desc = "increase pane height"})
 
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
