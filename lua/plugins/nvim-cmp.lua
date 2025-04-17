@@ -1,9 +1,25 @@
+local function getSnippetsDir()
+  -- TODO: Optional add another dir that wouldn't be backed up to git
+  -- local snippetsDir = "$HOME/.config/nvim/snippets"
+  -- return snippetsDir
+  return vim.fn.expand("~/.config/nvim/snippets")
+end
+
 return {
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
       {
+        -- Plugin to add snippets from selected code
+        "chrisgrieser/nvim-scissors",
+        dependencies = "nvim-telescope/telescope.nvim", -- if using telescope
+        opts = {
+          snippetDir = getSnippetsDir(),
+        },
+      },
+      {
+        -- Plugin to use custom snippets
         "L3MON4D3/LuaSnip",
         build = (function()
           if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
@@ -11,6 +27,11 @@ return {
           end
           return "make install_jsregexp"
         end)(),
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load({
+            paths = { getSnippetsDir() },
+          })
+        end,
       },
       "rafamadriz/friendly-snippets", -- useful snippets
       "saadparwaiz1/cmp_luasnip", -- for autocompletion
@@ -100,7 +121,7 @@ return {
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         }),
         sources = {
-          { name = "nvim_lsp" },
+          { name = "nvim_lsp" }, -- snippets from lsp
           { name = "luasnip" }, -- snippets
           { name = "buffer" }, -- text within current buffer
           { name = "path" }, -- file system paths

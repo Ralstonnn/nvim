@@ -1,0 +1,1 @@
+{"class + Class":{"body":["package ${1:};","","public class ${2:} {","","}"],"prefix":"new_class"}}
