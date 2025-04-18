@@ -2,7 +2,7 @@ local macro_recording = {
   function()
     local reg = vim.fn.reg_recording()
     if reg ~= "" then
-      return " Recording @" .. reg
+      return "Recording @" .. reg
     end
     return ""
   end,
