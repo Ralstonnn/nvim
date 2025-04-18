@@ -1,1 +1,0 @@
-{"keymap + mapping":{"prefix":["keymap","mapping"],"body":"vim.keymap.set(\"n\", \"${1:keys}\", ${2:action}, { desc = \"${3:description}\" })"}}

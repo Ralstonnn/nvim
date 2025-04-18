@@ -1,3 +1,13 @@
+local macro_recording = {
+  function()
+    local reg = vim.fn.reg_recording()
+    if reg ~= "" then
+      return "Recording @" .. reg
+    end
+    return ""
+  end,
+}
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -25,7 +35,7 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_b = { "branch", "diff", "diagnostics", macro_recording },
           lualine_c = {
             {
               "filename",

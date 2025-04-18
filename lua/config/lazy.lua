@@ -27,4 +27,7 @@ require("lazy").setup({
   change_detection = {
     enabled = true,
   },
+  callback = function()
+    require("lazy").sync()
+  end,
 })
