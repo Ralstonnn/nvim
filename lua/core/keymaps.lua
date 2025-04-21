@@ -19,9 +19,10 @@ keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnosti
 -- for people to discover. otherwise, you normally need to press <c-\><c-n>, which
 -- is not what someone will guess without a bit more experience.
 --
--- note: this won't work in all terminal emulators/tmux/etc. try your own mapping
+-- NOTE: this won't work in all terminal emulators/tmux/etc. try your own mapping
 -- or just use <c-\><c-n> to exit terminal mode
-keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
+-- NOTE: Commented out because it interferes with lazygit
+-- keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "exit terminal mode" })
 
 -- keybinds to make split navigation easier.
 --  use ctrl+<hjkl> to switch between windows
