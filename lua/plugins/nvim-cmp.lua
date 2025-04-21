@@ -2,7 +2,11 @@ local function getSnippetsDir()
   -- TODO: Optional add another dir that wouldn't be backed up to git
   -- local snippetsDir = "$HOME/.config/nvim/snippets"
   -- return snippetsDir
-  return vim.fn.expand("~/.local/share/nvim_snippets")
+  local path = vim.fn.expand("~/.local/share/nvim_snippets")
+  if vim.fn.isdirectory(path) == 0 then
+    vim.fn.mkdir(path, "p")
+  end
+  return path
 end
 
 return {
