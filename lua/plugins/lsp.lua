@@ -70,6 +70,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "saghen/blink.cmp",
       -- Useful status updates for LSP.
       { "j-hui/fidget.nvim", opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -93,13 +94,15 @@ return {
       })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- Set folding capabilities fror ufo
+      -- Set folding capabilities for ufo
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
 
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      -- NOTE: Uncomment if move back to nvim-cmp
+      -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
       local servers = {
         ts_ls = {
