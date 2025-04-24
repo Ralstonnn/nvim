@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "JsLogMacro",
   pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
   callback = function()
-    vim.fn.setreg("l", "yiwoconsole.log('" .. esc .. "pa: ', " .. esc .. "pa);" .. esc)
-    vim.fn.setreg("o", "yiwoconsole.log('" .. esc .. "pviwUA:');" .. esc .. "oconsole.log(" .. esc .. "pA);" .. esc)
+    vim.fn.setreg("l", "yoconsole.log('" .. esc .. "pa: ', " .. esc .. "pa);" .. esc)
+    vim.fn.setreg("o", "yoconsole.log('" .. esc .. "pa:');" .. esc .. "oconsole.log(" .. esc .. "pA);" .. esc)
   end,
 })
