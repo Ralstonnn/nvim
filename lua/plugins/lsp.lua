@@ -1,8 +1,14 @@
 local function getVueTsPluginPathFromMason()
-  local mason_registry = require("mason-registry")
-  local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-    .. "/node_modules/@vue/language-server"
-  return vue_language_server_path
+  local mason_path = vim.fn.stdpath("data") .. "/mason" -- Expands to full Mason directory
+  local pkg_name = "vue-language-server" -- Replace with your package name
+
+  -- Construct the full path
+  local path = mason_path .. "/packages/" .. pkg_name .. "/node_modules/@vue/language-server"
+  if vim.fn.isdirectory(path) == 1 then
+    return path
+  else
+    return ""
+  end
 end
 
 local function onLspAttach(event)
