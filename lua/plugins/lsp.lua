@@ -166,9 +166,7 @@ return {
         "cspell",
       })
 
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup({ automatic_enable = false })
-
+      -- Add servers to vim.lsp.config
       for server_name, config in pairs(servers) do
         local server = config or {}
         -- This handles overriding only values explicitly passed
@@ -184,6 +182,9 @@ return {
         -- Setup language servers
         vim.lsp.config[server_name] = server
       end
+
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      require("mason-lspconfig").setup()
     end,
   },
 }
