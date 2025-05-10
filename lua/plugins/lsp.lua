@@ -173,18 +173,19 @@ return {
         -- by the server configuration above. Useful when disabling
         -- certain features of an LSP (for example, turning off formatting for tsserver)
         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-
-        -- Skip jdtls setup it is managed by another plugin and handled in java.lua
-        if server_name == "jdtls" then
-          return
-        end
-
         -- Setup language servers
         vim.lsp.config[server_name] = server
       end
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = {},
+        automatic_enable = {
+          exclude = {
+            "jdtls",
+          },
+        },
+      })
     end,
   },
 }
