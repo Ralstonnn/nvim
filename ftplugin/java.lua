@@ -1,13 +1,9 @@
 local function getJdtlsPath()
-  local mason_registry = require("mason-registry")
-  local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
-  return jdtls_path
+  return vim.fn.stdpath("data") .. "/mason/packages/jdtls"
 end
 
 local function getDebuggerPath()
-  local mason_registry = require("mason-registry")
-  local debugger = mason_registry.get_package("java-debug-adapter"):get_install_path()
-  return debugger
+  return vim.fn.stdpath("data") .. "/mason/packages/java-debug-adapter"
 end
 
 local config = {
