@@ -63,6 +63,10 @@ return {
     snippets = { preset = "luasnip" },
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
+      providers = {
+        -- Remove if buffer completion is needed only when lsp has no variants
+        lsp = { fallbacks = {} },
+      },
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
