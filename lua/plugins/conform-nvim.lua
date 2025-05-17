@@ -30,7 +30,7 @@ return {
         cpp = { "clang-format" },
         sh = { "beautysh" },
         bash = { "beautysh" },
-        ["*"] = {"cspell"}
+        ["*"] = { "cspell" },
       },
     },
   },
