@@ -42,6 +42,23 @@ return {
             colorscheme = "rose-pine-main",
             before = [[
               vim.opt.background = "dark"
+              require("rose-pine").setup({
+                styles = {
+                  transparency = false
+                }
+              })
+            ]],
+          },
+          {
+            name = "Rose Pine Transparent",
+            colorscheme = "rose-pine-main",
+            before = [[
+              vim.opt.background = "dark"
+              require("rose-pine").setup({
+                styles = {
+                  transparency = true
+                }
+              })
             ]],
           },
           {
@@ -49,6 +66,11 @@ return {
             colorscheme = "rose-pine-moon",
             before = [[
               vim.opt.background = "dark"
+              require("rose-pine").setup({
+                styles = {
+                  transparency = false
+                }
+              })
             ]],
           },
           {
@@ -56,6 +78,11 @@ return {
             colorscheme = "rose-pine-dawn",
             before = [[
               vim.opt.background = "light"
+              require("rose-pine").setup({
+                styles = {
+                  transparency = false
+                }
+              })
             ]],
           },
 
