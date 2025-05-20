@@ -12,7 +12,6 @@ end, { desc = "go to previous [d]iagnostic message" })
 keymap.set("n", "]d", function()
   vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "go to next [d]iagnostic message" })
-keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "show diagnostic [e]rror messages" })
 -- keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic [q]uickfix list" })
 
 -- exit terminal mode in the builtin terminal with a shortcut that is a bit easier

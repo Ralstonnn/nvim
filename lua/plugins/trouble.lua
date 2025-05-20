@@ -4,14 +4,12 @@ return {
   cmd = "Trouble",
   keys = {
     {
-      "<leader>cs",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
-      desc = "Symbols (Trouble)",
-    },
-    {
-      "<leader>q",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-      desc = "Buffer Diagnostics (Trouble)",
+      "<leader>Tq",
+      function()
+        vim.cmd("cclose")
+        vim.cmd("Trouble quickfix toggle")
+      end,
+      desc = "Quickfix (Trouble)",
     },
   },
 }
