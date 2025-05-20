@@ -11,14 +11,6 @@ local function getVueTsPluginPathFromMason()
   end
 end
 
-local function reloadLsp()
-  vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
-
-  vim.defer_fn(function()
-    vim.cmd("edit")
-  end, 500)
-end
-
 local function onLspAttach(event)
   local map = function(keys, func, desc)
     vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -41,7 +33,7 @@ local function onLspAttach(event)
   map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
   map("K", vim.lsp.buf.hover, "Hover Documentation")
   map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  map("<leader>lr", reloadLsp, "[L]sp [R]estart")
+  map("<leader>lr", "<cmd>LspRestart<CR>", "[L]sp [R]estart")
 
   -- The following two autocommands are used to highlight references of the
   -- word under your cursor when your cursor rests there for a little while.
