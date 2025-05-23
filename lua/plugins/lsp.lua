@@ -134,7 +134,7 @@ return {
             "vue",
           },
         },
-        volar = {},
+        ["vue-language-server"] = {},
         svelte = {},
         lua_ls = {
           settings = {
