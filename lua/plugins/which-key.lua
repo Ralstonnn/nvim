@@ -25,6 +25,7 @@ return {
         { "<leader>T", group = "[T]rouble" },
         { "<leader>ts", group = "[T]abs [S]elect" },
         { "<leader>l", group = "[L]sp" },
+        { "<leader>le", group = "[L]sp [E]rrors" },
         { "<leader>o", group = "[O]verseer" },
       })
     end,

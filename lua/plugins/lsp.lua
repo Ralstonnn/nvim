@@ -27,9 +27,9 @@ local function onLspAttach(event)
   map("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
   map("gI", telescope_builtin.lsp_implementations, "[G]oto [I]mplementation")
   map("<leader>ld", telescope_builtin.lsp_type_definitions, "Type Definition")
-  map("<leader>lE", "<cmd>Trouble diagnostics toggle<CR>", "Show Diagnostic [E]rror Messages")
+  map("<leader>lee", "<cmd>Trouble diagnostics toggle<CR>", "Show Diagnostic [E]rror Messages")
   map(
-    "<leader>le",
+    "<leader>leb",
     "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
     "Show Diagnostic [E]rror Messages Current Buffer"
   )
@@ -91,8 +91,6 @@ return {
       { "MysticalDevil/inlay-hints.nvim", opts = {} },
     },
     config = function()
-      local lspconfig = require("lspconfig")
-
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = onLspAttach,
@@ -150,12 +148,19 @@ return {
           apabilities = {
             offsetEncoding = { "utf-16" },
           },
+          filetypes = {
+            "c",
+            "cpp",
+            "cmake",
+            "make",
+          },
         },
         cmake = {},
         cssls = {},
         bashls = {},
         emmet_ls = {},
         tailwindcss = {},
+        buf = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
