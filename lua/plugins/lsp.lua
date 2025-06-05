@@ -178,13 +178,14 @@ return {
 
       -- Add servers to vim.lsp.config
       for server_name, config in pairs(servers) do
-        local server = config or {}
+        local server_settings = config or {}
         -- This handles overriding only values explicitly passed
         -- by the server configuration above. Useful when disabling
         -- certain features of an LSP (for example, turning off formatting for tsserver)
-        server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+        server_settings.capabilities =
+          vim.tbl_deep_extend("force", {}, capabilities, server_settings.capabilities or {})
         -- Setup language servers
-        vim.lsp.config[server_name] = server
+        vim.lsp.config[server_name] = server_settings
       end
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
