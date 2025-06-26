@@ -4,6 +4,7 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
     },
+    event = { "BufWinEnter" },
     config = function()
       local ufo = require("ufo")
 
@@ -22,6 +23,9 @@ return {
         end
       end, { desc = "Peek Fold" })
 
+      --------------------------------
+      -- NOTE: Set in lsp config file
+      --------------------------------
       -- Option 2: nvim lsp as LSP client
       -- Tell the server the capability of foldingRange,
       -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
