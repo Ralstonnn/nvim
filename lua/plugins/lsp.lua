@@ -132,7 +132,7 @@ return {
             "vue",
           },
         },
-        ["vue-language-server"] = {},
+        vue_ls = {},
         svelte = {},
         lua_ls = {
           settings = {
