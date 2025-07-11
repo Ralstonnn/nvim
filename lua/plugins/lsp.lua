@@ -1,3 +1,35 @@
+local function enableServers(servers)
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- Set folding capabilities for ufo
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+
+  -- NOTE: Uncomment if move back to nvim-cmp
+  -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+  capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
+
+  local excludedServers = {
+    jdtls = true,
+  }
+
+  -- Add servers to vim.lsp.config
+  for server_name, config in pairs(servers) do
+    local server_settings = config or {}
+    -- This handles overriding only values explicitly passed
+    -- by the server configuration above. Useful when disabling
+    -- certain features of an LSP (for example, turning off formatting for tsserver)
+    server_settings.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_settings.capabilities or {})
+    -- Setup language servers
+    vim.lsp.config[server_name] = server_settings
+
+    if not excludedServers[server_name] then
+      vim.lsp.enable(server_name)
+    end
+  end
+end
+
 local function getVueTsPluginPathFromMason()
   local mason_path = vim.fn.stdpath("data") .. "/mason" -- Expands to full Mason directory
   local pkg_name = "vue-language-server" -- Replace with your package name
@@ -102,25 +134,38 @@ return {
         command = "set filetype=css",
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- Set folding capabilities for ufo
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-
-      -- NOTE: Uncomment if move back to nvim-cmp
-      -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
-
       local servers = {
-        ts_ls = {
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = getVueTsPluginPathFromMason(),
-                languages = { "vue" },
+        -- ts_ls = {
+        --   init_options = {
+        --     plugins = {
+        --       {
+        --         name = "@vue/typescript-plugin",
+        --         location = getVueTsPluginPathFromMason(),
+        --         languages = { "vue" },
+        --       },
+        --     },
+        --   },
+        --   filetypes = {
+        --     "typescript",
+        --     "javascript",
+        --     "javascriptreact",
+        --     "typescriptreact",
+        --     "vue",
+        --   },
+        -- },
+        vue_ls = {},
+        vtsls = {
+          settings = {
+            vtsls = {
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = "@vue/typescript-plugin",
+                    location = getVueTsPluginPathFromMason(),
+                    languages = { "vue" },
+                    configNamespace = "typescript",
+                  },
+                },
               },
             },
           },
@@ -132,7 +177,6 @@ return {
             "vue",
           },
         },
-        vue_ls = {},
         svelte = {},
         lua_ls = {
           settings = {
@@ -164,6 +208,7 @@ return {
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
+
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
         "prettierd",
@@ -176,27 +221,17 @@ return {
         "cspell",
       })
 
-      -- Add servers to vim.lsp.config
-      for server_name, config in pairs(servers) do
-        local server_settings = config or {}
-        -- This handles overriding only values explicitly passed
-        -- by the server configuration above. Useful when disabling
-        -- certain features of an LSP (for example, turning off formatting for tsserver)
-        server_settings.capabilities =
-          vim.tbl_deep_extend("force", {}, capabilities, server_settings.capabilities or {})
-        -- Setup language servers
-        vim.lsp.config[server_name] = server_settings
-      end
-
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       require("mason-lspconfig").setup({
         ensure_installed = {},
-        automatic_enable = {
-          exclude = {
-            "jdtls",
-          },
-        },
+        -- automatic_enable = {
+        --   exclude = {
+        --     "jdtls",
+        --   },
+        -- },
       })
+
+      enableServers(servers)
     end,
   },
 }
