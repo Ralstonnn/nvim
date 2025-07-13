@@ -153,6 +153,7 @@ return {
         --     "vue",
         --   },
         -- },
+        -- NOTE: Last working version was 3.0.1 with next major update vue 2 support will be dropped
         vue_ls = {},
         vtsls = {
           settings = {
