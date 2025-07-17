@@ -22,6 +22,15 @@ return {
       vim.keymap.set("n", "<leader>gsp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "[G]it [S]signs [P]review Hunk" })
       vim.keymap.set("n", "<leader>gsd", "<cmd>Gitsigns diffthis<CR>", { desc = "[G]it [S]signs [D]iff" })
       vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "[G]it [B]lame Toggle" })
+
+      local customUtils = require("utils.git.custom")
+      -- NOTE: Custom functions
+      vim.keymap.set(
+        "n",
+        "<leader>gwt",
+        customUtils.copyTaskName,
+        { desc = "[G]it [W]ork [T]ask Name" }
+      )
     end,
   },
   {
