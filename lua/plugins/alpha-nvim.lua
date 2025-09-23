@@ -20,7 +20,7 @@ return {
     -- Set menu
     dashboard.section.buttons.val = {
       dashboard.button("n", "  > New file", "<cmd>ene<CR>"),
-      dashboard.button("r", "  > Session restore", "<cmd>SessionRestore<CR>"),
+      dashboard.button("r", "  > Session restore", "<cmd>AutoSession restore<CR>"),
       dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
     }
 
