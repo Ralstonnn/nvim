@@ -65,6 +65,7 @@ return {
       -- },
       filters = {
         git_ignored = false,
+        custom = { "^\\.DS_Store" },
       },
       git = {
         timeout = 4000,
