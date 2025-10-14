@@ -31,7 +31,6 @@ return {
         sh = { "beautysh" },
         bash = { "beautysh" },
         proto = { "buf" },
-        ["*"] = { "cspell" },
       },
     },
   },
