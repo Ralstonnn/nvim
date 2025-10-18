@@ -206,6 +206,13 @@ return {
         emmet_ls = {},
         tailwindcss = {},
         buf = {},
+        kotlin_language_server = {
+          filetypes = {
+            "kotlin",
+            "kt",
+            "kts",
+          },
+        },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -220,6 +227,8 @@ return {
         "cpptools", -- C, CPP, RUST DAP
         "eslint_d",
         "cspell",
+        "ktfmt",
+        "ktlint",
       })
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

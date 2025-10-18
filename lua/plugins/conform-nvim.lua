@@ -31,6 +31,7 @@ return {
         sh = { "beautysh" },
         bash = { "beautysh" },
         proto = { "buf" },
+        kotlin = { "ktlint" },
       },
     },
   },
