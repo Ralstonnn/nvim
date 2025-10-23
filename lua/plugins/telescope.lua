@@ -19,6 +19,30 @@ return { -- Fuzzy Finder (files, lsp, etc)
     },
     config = function()
       require('telescope').setup {
+        defaults = {
+          path_display = { "smart" },
+          mappings = {
+            i = {
+              ["<C-j>"] = require("telescope.actions").move_selection_next,
+              ["<C-k>"] = require("telescope.actions").move_selection_previous,
+            },
+            n = {
+              ["<C-j>"] = require("telescope.actions").move_selection_next,
+              ["<C-k>"] = require("telescope.actions").move_selection_previous,
+            },
+          },
+        },
+        pickers = {
+          buffers = {
+            show_all_buffers = true,
+            sort_mru = true,
+            mappings = {
+              i = {
+                ["<C-d>"] = "delete_buffer",
+              },
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),

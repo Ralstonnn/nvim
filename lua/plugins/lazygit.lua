@@ -4,7 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  config = function()
+  init = function()
     vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
     vim.g.lazygit_floating_window_scaling_factor = 0.9 -- scaling factor for floating window
     vim.g.lazygit_floating_window_border_chars = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } -- customize lazygit popup window border characters
@@ -14,7 +14,8 @@ return {
     vim.g.lazygit_config_file_path = "" -- custom config file path
     -- OR
     vim.g.lazygit_config_file_path = {} -- table of custom config file paths
-
-    vim.keymap.set("n", "<leader>gi", ":LazyGit<CR>", { desc = "LazyGit" })
   end,
+  keys = {
+    {"<leader>gi", ":LazyGit<CR>", desc = "LazyGit" },
+  }
 }
