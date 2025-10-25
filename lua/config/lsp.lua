@@ -1,6 +1,7 @@
 local function onLspAttach(event)
-  local map = function(keys, func, desc)
-    vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+  local map = function(keys, func, desc, mode)
+    mode = mode or "n"
+    vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
   end
 
   local telescope_builtin = require("telescope.builtin")
