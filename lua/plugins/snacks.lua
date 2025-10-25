@@ -21,6 +21,9 @@ return {
       },
     },
     gitbrowse = require("config.snacks.gitbrowse"),
+    indent = {},
+    lazygit = {},
+    dashboard = require("config.snacks.dashboard")
   },
   keys = {
     {
@@ -37,6 +40,13 @@ return {
       end,
       desc = "Git Browse",
       mode = { "n", "v" },
+    },
+    {
+      "<leader>gi",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "LazyGit",
     },
   },
 }
