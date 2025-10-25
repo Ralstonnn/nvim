@@ -62,4 +62,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = onLspAttach,
 })
 
+-- Associate pcss files with css
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.pcss",
+  command = "set filetype=css",
+})
 
