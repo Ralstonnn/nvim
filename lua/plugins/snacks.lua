@@ -4,6 +4,8 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    gitbrowse = require("config.snacks.gitbrowse"),
+    dashboard = require("config.snacks.dashboard"),
     input = {
       enabled = true,
     },
@@ -20,10 +22,9 @@ return {
         col = 0,
       },
     },
-    gitbrowse = require("config.snacks.gitbrowse"),
     indent = {},
     lazygit = {},
-    dashboard = require("config.snacks.dashboard")
+    scope = {},
   },
   keys = {
     {
