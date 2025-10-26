@@ -15,13 +15,6 @@ local function onLspAttach(event)
   map("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
   map("gI", telescope_builtin.lsp_implementations, "[G]oto [I]mplementation")
   map("<leader>ld", telescope_builtin.lsp_type_definitions, "Type Definition")
-  map("<leader>lee", "<cmd>Trouble diagnostics toggle<CR>", "Show Diagnostic [E]rror Messages")
-  map(
-    "<leader>leb",
-    "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
-    "Show Diagnostic [E]rror Messages Current Buffer"
-  )
-  map("<leader>ls", "<cmd>Trouble symbols toggle focus=false<CR>", "Symbols (Trouble)")
   map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
   map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
   map("K", vim.lsp.buf.hover, "Hover Documentation")
