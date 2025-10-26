@@ -46,15 +46,16 @@ keymap.set('n', '<c-a-j>', '<cmd>resize -5<CR>', {desc = "decrease pane height"}
 keymap.set('n', '<c-a-k>', '<cmd>resize +5<CR>', {desc = "increase pane height"})
 
 -- tabs
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
-keymap.set("n", "<leader>td", "<cmd>tabonly<CR>", { desc = "Close all tabs except current" })
+-- keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+-- keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+-- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+-- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+-- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+-- keymap.set("n", "<leader>td", "<cmd>tabonly<CR>", { desc = "Close all tabs except current" })
+--
 -- Works with bufferline
-keymap.set("n", "<leader>tss", "<cmd>BufferLinePick<CR>", { desc = "Pick a tab" })
-keymap.set("n", "<leader>tsc", "<cmd>BufferLinePickClose<CR>", { desc = "Pick a tab to close" })
+-- keymap.set("n", "<leader>tss", "<cmd>BufferLinePick<CR>", { desc = "Pick a tab" })
+-- keymap.set("n", "<leader>tsc", "<cmd>BufferLinePickClose<CR>", { desc = "Pick a tab to close" })
 
 -- close buffers
 -- local function closeAllBuffersButCurrentOne()
