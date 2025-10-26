@@ -12,12 +12,13 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
     current_line_blame = true,
   },
   keys = {
-    {"<leader>gss", "<cmd>Gitsigns<CR>", desc = "[G]it [S]signs Toggle"},
-    {"<leader>gsn", "<cmd>Gitsigns next_hunk<CR>", desc = "[G]it [S]signs Next Hunk"},
-    {"<leader>gsu", "<cmd>Gitsigns prev_hunk<CR>", desc = "[G]it [S]signs Previous Hunk"},
-    {"<leader>gsp", "<cmd>Gitsigns preview_hunk<CR>", desc = "[G]it [S]signs [P]review Hunk"},
-    {"<leader>gsd", "<cmd>Gitsigns diffthis<CR>", desc = "[G]it [S]signs [D]iff"},
-    {"<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "[G]it [B]lame Toggle"},
+    {"<leader>gss", "<cmd>Gitsigns<CR>", desc = "Git Signs Toggle"},
+    {"<leader>ghj", "<cmd>Gitsigns next_hunk<CR>", desc = "Git Next Hunk"},
+    {"<leader>ghk", "<cmd>Gitsigns prev_hunk<CR>", desc = "Git Previous Hunk"},
+    {"<leader>ghp", "<cmd>Gitsigns preview_hunk<CR>", desc = "Git Preview Hunk"},
+    {"<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", desc = "Git Reset Hunk"},
+    {"<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Git Signs Diff"},
+    {"<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Git Blame Toggle"},
   },
   config = function()
     local customUtils = require("utils.git.custom")
