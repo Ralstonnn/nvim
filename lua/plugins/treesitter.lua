@@ -1,35 +1,37 @@
 return { -- Highlight, edit, and navigate code
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   lazy = false,
-  branch = 'main',
-  build = ':TSUpdate',
+  branch = "main",
+  build = ":TSUpdate",
   dependencies = {
     {
       "windwp/nvim-ts-autotag",
+      lazy = false,
       opts = {},
     },
     {
       "nvim-treesitter/nvim-treesitter-context",
-      opts = { enabled = true }
+      lazy = false,
+      opts = {},
     },
   },
-  confing = function()
-    local treesitter = require()
+  config = function()
+    local treesitter = require("nvim-treesitter")
 
-    treesitter.install(
-      {
-        "bash",
-        "c",
-        "html",
-        "lua",
-        "luadoc",
-        "markdown",
-        "vim",
-        "vimdoc",
-        "vue",
-        "typescript",
-        "javascript",
-      }
-    )
-  end
+    treesitter.install({
+      "bash",
+      "c",
+      "html",
+      "lua",
+      "luadoc",
+      "markdown",
+      "vim",
+      "vimdoc",
+      "vue",
+      "typescript",
+      "javascript",
+      "regex",
+      "css",
+    })
+  end,
 }
