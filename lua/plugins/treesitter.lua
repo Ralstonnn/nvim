@@ -1,7 +1,9 @@
+-- NOTE: Moved to old version of treesitter in master branch because the new one in main cant work with vue (doesn't insall parsers)
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
-  branch = "main",
+  branch = "master",
+  -- branch = "main",
   build = ":TSUpdate",
   dependencies = {
     {
@@ -15,10 +17,8 @@ return { -- Highlight, edit, and navigate code
       opts = {},
     },
   },
-  config = function()
-    local treesitter = require("nvim-treesitter")
-
-    treesitter.install({
+  opts = {
+    ensure_installed = {
       "bash",
       "c",
       "html",
@@ -32,6 +32,25 @@ return { -- Highlight, edit, and navigate code
       "javascript",
       "regex",
       "css",
-    })
-  end,
+    },
+  },
+  -- config = function()
+  --   local treesitter = require("nvim-treesitter")
+  --
+  --   treesitter.install({
+  --     "bash",
+  --     "c",
+  --     "html",
+  --     "lua",
+  --     "luadoc",
+  --     "markdown",
+  --     "vim",
+  --     "vimdoc",
+  --     "vue",
+  --     "typescript",
+  --     "javascript",
+  --     "regex",
+  --     "css",
+  --   })
+  -- end,
 }
