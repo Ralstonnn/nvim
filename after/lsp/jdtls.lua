@@ -6,7 +6,8 @@ local function getDebuggerPath()
   return vim.fn.stdpath("data") .. "/mason/packages/java-debug-adapter"
 end
 
-local config = {
+return {
+  filetypes = { "java" },
   cmd = { getJdtlsPath() .. "/bin/jdtls" },
   root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
   init_options = {
@@ -15,5 +16,3 @@ local config = {
     },
   },
 }
-
-require("jdtls").start_or_attach(config)
