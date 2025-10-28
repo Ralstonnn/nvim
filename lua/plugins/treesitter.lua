@@ -13,6 +13,7 @@ return { -- Highlight, edit, and navigate code
     },
     {
       "nvim-treesitter/nvim-treesitter-context",
+      enabled = false, -- NOTE: Disabled because dropbar does the same thing
       lazy = false,
       opts = {},
     },
