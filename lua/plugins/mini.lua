@@ -17,7 +17,7 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      require('mini.comment').setup()
+      -- require('mini.comment').setup()
 
       require('config.mini.statusline')
 
