@@ -62,5 +62,15 @@ return {
       -- 	end,
       -- })
     end,
+    keys = {
+      {
+        "<leader>ur",
+        function()
+          vim.cmd.UfoDisable()
+          vim.cmd.UfoEnable()
+        end,
+        {desc = "Nvim UFO Restart"}
+      },
+    },
   },
 }
