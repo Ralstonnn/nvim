@@ -4,7 +4,7 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 -- Disable line wrapping
--- vim.o.wrap = false
+vim.o.wrap = false
 
 vim.o.number = true
 vim.o.relativenumber = true
