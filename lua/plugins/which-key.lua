@@ -30,6 +30,8 @@ return {
         { "<leader>l", group = "[L]sp" },
         { "<leader>le", group = "[L]sp [E]rrors" },
         { "<leader>o", group = "[O]verseer" },
+        { "<leader>u", group = "UFO nvim" },
+        { "<leader>ur", group = "UFO nvim reload" },
       })
     end,
   },
