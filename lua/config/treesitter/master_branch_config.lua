@@ -2,7 +2,6 @@ return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
   branch = "master",
-  -- branch = "main",
   build = ":TSUpdate",
   dependencies = {
     {
@@ -45,25 +44,4 @@ return { -- Highlight, edit, and navigate code
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
   end,
-
-  -- NOTE: Config function for main branch
-  -- config = function()
-  --   local treesitter = require("nvim-treesitter")
-  --
-  --   treesitter.install({
-  --     "bash",
-  --     "c",
-  --     "html",
-  --     "lua",
-  --     "luadoc",
-  --     "markdown",
-  --     "vim",
-  --     "vimdoc",
-  --     "vue",
-  --     "typescript",
-  --     "javascript",
-  --     "regex",
-  --     "css",
-  --   })
-  -- end,
 }
