@@ -16,6 +16,8 @@ return {
       "vue",
       "typescript",
       "javascript",
+      "jsx",
+      "ecma",
     })
   end,
 }
