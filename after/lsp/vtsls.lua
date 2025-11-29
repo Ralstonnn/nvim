@@ -1,11 +1,12 @@
 local function getVueTsPluginPathFromMason()
-  local mason_path = vim.fn.stdpath("data") .. "/mason" -- Expands to full Mason directory
+  local mason_root = vim.fs.joinpath(vim.fn.stdpath("data"), "mason") -- Expands to full Mason directory
   local pkg_name = "vue-language-server" -- Replace with your package name
 
   -- Construct the full path
-  local path = mason_path .. "/packages/" .. pkg_name .. "/node_modules/@vue/language-server"
-  if vim.fn.isdirectory(path) == 1 then
-    return path
+  local server_path = vim.fs.joinpath(mason_root, "packages", pkg_name, "node_modules", "@vue", "language-server")
+
+  if vim.fn.isdirectory(server_path) == 1 then
+    return server_path
   else
     return ""
   end
@@ -34,4 +35,3 @@ return {
     "vue",
   },
 }
-
