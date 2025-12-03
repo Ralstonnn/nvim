@@ -15,6 +15,9 @@ return {
     notifier = {
       enabled = true,
     },
+    dim = {
+      enabled = true,
+    },
     styles = {
       input = {
         relative = "cursor",
@@ -48,6 +51,20 @@ return {
         Snacks.lazygit()
       end,
       desc = "LazyGit",
+    },
+    {
+      "<leader>ide",
+      function()
+        Snacks.dim.enable()
+      end,
+      desc = "Snacks dim enable",
+    },
+    {
+      "<leader>idd",
+      function()
+        Snacks.dim.disable()
+      end,
+      desc = "Snacks dim disable",
     },
   },
 }
