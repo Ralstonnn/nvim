@@ -2,7 +2,9 @@ return {
   {
     "nanozuki/tabby.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      preset = "tab_only",
+    },
     keys = {
       { "<leader>to", "<cmd>tabnew<CR>", desc = "Open new tab" },
       { "<leader>tc", "<cmd>tabclose<CR>", desc = "Close current tab" },
