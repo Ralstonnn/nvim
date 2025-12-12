@@ -1,70 +1,27 @@
+local keys_dir = "config.snacks.keys."
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
   opts = {
-    gitbrowse = require("config.snacks.gitbrowse"),
-    dashboard = require("config.snacks.dashboard"),
-    input = {
-      enabled = true,
-    },
-    image = {
-      enabled = true,
-    },
-    notifier = {
-      enabled = true,
-    },
-    dim = {
-      enabled = true,
-    },
-    styles = {
-      input = {
-        relative = "cursor",
-        row = -3,
-        col = 0,
-      },
-    },
-    indent = {},
-    lazygit = {},
-    scope = {},
+    gitbrowse = require("config.snacks.config.gitbrowse"),
+    dashboard = require("config.snacks.config.dashboard"),
+    input = require("config.snacks.config.input"),
+    image = require("config.snacks.config.image"),
+    notifier = require("config.snacks.config.picker"),
+    dim = require("config.snacks.config.dim"),
+    styles = require("config.snacks.config.styles"),
+    indent = require("config.snacks.config.indent"),
+    lazygit = require("config.snacks.config.lazygit"),
+    scope = require("config.snacks.config.scope"),
+    picker = require("config.snacks.config.picker"),
   },
   keys = {
-    {
-      "<leader>rf",
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = "Rename File",
-    },
-    {
-      "<leader>gB",
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = "Git Browse",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>gi",
-      function()
-        Snacks.lazygit()
-      end,
-      desc = "LazyGit",
-    },
-    {
-      "<leader>ide",
-      function()
-        Snacks.dim.enable()
-      end,
-      desc = "Snacks dim enable",
-    },
-    {
-      "<leader>idd",
-      function()
-        Snacks.dim.disable()
-      end,
-      desc = "Snacks dim disable",
-    },
+    unpack(require("config.snacks.keys.gitbrowse")),
+    unpack(require("config.snacks.keys.lazygit")),
+    unpack(require("config.snacks.keys.dim")),
+    unpack(require("config.snacks.keys.picker")),
   },
 }
