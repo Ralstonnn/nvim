@@ -19,7 +19,6 @@ return {
           "bashls",
           "emmet_ls",
           "tailwindcss",
-          "kotlin_language_server",
           "jdtls",
         },
       })
@@ -36,8 +35,6 @@ return {
           "cpptools", -- C, CPP, RUST DAP
           "eslint_d",
           "cspell",
-          "ktfmt",
-          "ktlint",
         },
       })
     end,
