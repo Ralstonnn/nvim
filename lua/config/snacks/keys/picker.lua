@@ -96,9 +96,9 @@ return {
   {
     "<leader>sf",
     function()
-      Snacks.picker.smart()
+      Snacks.picker.files()
     end,
-    desc = "Smart Find Files",
+    desc = "Find Files",
   },
   {
     "<leader>sn",
