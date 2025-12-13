@@ -1,4 +1,15 @@
-local keys_dir = "config.snacks.keys."
+local function mergeKeys(nestedArray)
+  local keysArr = {}
+
+  for i = 1, #nestedArray do
+    local currentArr = nestedArray[i]
+    for j = 1, #currentArr do
+      keysArr[#keysArr + 1] = currentArr[j]
+    end
+  end
+
+  return keysArr
+end
 
 return {
   "folke/snacks.nvim",
@@ -18,10 +29,10 @@ return {
     scope = require("config.snacks.config.scope"),
     picker = require("config.snacks.config.picker"),
   },
-  keys = {
-    unpack(require("config.snacks.keys.gitbrowse")),
-    unpack(require("config.snacks.keys.lazygit")),
-    unpack(require("config.snacks.keys.dim")),
-    unpack(require("config.snacks.keys.picker")),
-  },
+  keys = mergeKeys({
+    require("config.snacks.keys.gitbrowse"),
+    require("config.snacks.keys.lazygit"),
+    require("config.snacks.keys.dim"),
+    require("config.snacks.keys.picker"),
+  }),
 }
