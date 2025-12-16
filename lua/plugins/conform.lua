@@ -3,7 +3,6 @@ return {
     "stevearc/conform.nvim",
     lazy = false,
     opts = {
-      notify_on_error = false,
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
@@ -16,8 +15,8 @@ return {
         javascriptreact = { "prettierd", "eslint_d" },
         typescriptreact = { "prettierd", "eslint_d" },
         vue = { "prettierd", "eslint_d" },
-        css = { "prettierd", "eslint_d" },
-        scss = { "prettierd", "eslint_d" },
+        css = { "prettierd", "stylelint", "eslint_d" },
+        scss = { "prettierd", "stylelint", "eslint_d" },
         c = { "clang-format" },
         cpp = { "clang-format" },
         sh = { "beautysh" },
@@ -26,7 +25,7 @@ return {
         kotlin = { "ktlint" },
       },
     },
-    config = function()
+    config = function(_, opts)
       local conform = require("conform")
 
       -- Constant path to the config file (relative to git root)
@@ -34,13 +33,7 @@ return {
 
       -- Default formatters if no config file present
       local defaults = {
-        formatters = {
-          lua = { "stylua" },
-          python = { "isort", "yapf" },
-          json = { "prettier" },
-          yaml = { "prettier" },
-          markdown = { "prettier" },
-        },
+        formatters = opts.formatters_by_ft,
         args = {},
       }
 
