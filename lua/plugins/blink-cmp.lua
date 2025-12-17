@@ -17,7 +17,6 @@ return {
       {
         -- Plugin to add snippets from selected code
         "chrisgrieser/nvim-scissors",
-        dependencies = "nvim-telescope/telescope.nvim", -- if using telescope
         opts = {
           snippetDir = getSnippetsDir(),
         },
@@ -72,6 +71,7 @@ return {
 
       -- Show the documentation popup
       completion = { documentation = { auto_show = true } },
+      snippets = { preset = "luasnip" },
 
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
