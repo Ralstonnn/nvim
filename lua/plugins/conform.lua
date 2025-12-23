@@ -89,7 +89,7 @@ return {
       conform.format = function(opts)
         local bufnr = opts.buf or vim.api.nvim_get_current_buf()
         local cfg = load_config(bufnr) or defaults
-        vim.notify("Using conform config: " .. vim.inspect(cfg), vim.log.levels.DEBUG)
+        -- vim.notify("Using conform config: " .. vim.inspect(cfg), vim.log.levels.DEBUG)
 
         conform.formatters_by_ft = cfg.formatters
 
