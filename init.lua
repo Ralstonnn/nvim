@@ -1,4 +1,4 @@
 require("core")
 require("config.lazy")
-require("config.lsp") -- LspAttach command and keymaps
+require("config.lsp.lsp") -- LspAttach command and keymaps
 require("macros")

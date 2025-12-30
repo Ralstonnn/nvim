@@ -20,6 +20,7 @@ return {
           "emmet_ls",
           "tailwindcss",
           "jdtls",
+          "typos_lsp",
         },
       })
 
