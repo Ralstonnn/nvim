@@ -15,6 +15,7 @@ return {
         javascriptreact = { "prettierd", "eslint_d" },
         typescriptreact = { "prettierd", "eslint_d" },
         vue = { "prettierd", "eslint_d" },
+        json = { "prettierd" },
         css = { "prettierd", "stylelint", "eslint_d" },
         scss = { "prettierd", "stylelint", "eslint_d" },
         c = { "clang-format" },
