@@ -59,3 +59,6 @@ vim.o.confirm = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.o.hlsearch = true
+
+-- Enable true colors
+vim.opt.termguicolors = true
