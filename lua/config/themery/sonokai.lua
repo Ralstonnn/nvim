@@ -1,0 +1,37 @@
+return {
+  {
+    name = "Sonokai Atlantis",
+    colorscheme = "sonokai",
+    before = [[
+          vim.g.sonokai_style = 'atlantis'
+        ]],
+  },
+  {
+    name = "Sonokai Andromeda",
+    colorscheme = "sonokai",
+    before = [[
+          vim.g.sonokai_style = 'andromeda'
+        ]],
+  },
+  {
+    name = "Sonokai Shusia",
+    colorscheme = "sonokai",
+    before = [[
+          vim.g.sonokai_style = 'shusia'
+        ]],
+  },
+  {
+    name = "Sonokai Maia",
+    colorscheme = "sonokai",
+    before = [[
+          vim.g.sonokai_style = 'maia'
+        ]],
+  },
+  {
+    name = "Sonokai Espresso",
+    colorscheme = "sonokai",
+    before = [[
+          vim.g.sonokai_style = 'espresso'
+        ]],
+  },
+}

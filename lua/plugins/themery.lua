@@ -1,3 +1,5 @@
+local mergeKeys = require("utils.common").mergeKeys
+
 return {
   "zaldih/themery.nvim",
   lazy = false,
@@ -6,68 +8,23 @@ return {
     "navarasu/onedark.nvim",
     "rebelot/kanagawa.nvim",
     "neanias/everforest-nvim",
+    "sainnhe/sonokai",
+    "rose-pine/neovim",
+    "folke/tokyonight.nvim",
+    "tiagovla/tokyodark.nvim",
   },
   opts = {
-    themes = {
+    themes = mergeKeys({
+      require("config.themery.one-dark"),
+      require("config.themery.kanagawa"),
+      require("config.themery.rose-pine"),
+      require("config.themery.sonokai"),
+      require("config.themery.tokyonight"),
       {
-        name = "One Dark Warm",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "warm"
-          })
-        ]],
+        "tokyodark",
+        "everforest",
       },
-      {
-        name = "One Dark Warmer",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "warmer"
-          })
-        ]],
-      },
-      {
-        name = "One Dark Cool",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "cool"
-          })
-        ]],
-      },
-      {
-        name = "One Dark Deep",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "deep"
-          })
-        ]],
-      },
-      {
-        name = "One Dark Dark",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "dark"
-          })
-        ]],
-      },
-      {
-        name = "One Dark Darker",
-        colorscheme = "onedark",
-        before = [[
-          require('onedark').setup({
-              style = "darker"
-          })
-        ]],
-      },
-      "kanagawa-wave",
-      "kanagawa-dragon",
-      "kanagawa-lotus",
-      "everforest",
-    },
+    }),
     listPreview = true,
   },
 }
