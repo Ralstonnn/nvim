@@ -19,6 +19,7 @@ return {
         { "<leader>gs", group = "[G]it [S]igns" },
         { "<leader>gh", group = "[G]it [H]unk" },
         { "<leader>gw", group = "[G]it [W]ork" },
+        { "<leader>g", group = "[G]it [T]ree" },
         { "<leader>h", group = "[H]arpoon" },
         { "<leader>r", group = "[R]ename" },
         { "<leader>s", group = "[S]earch" },
