@@ -14,7 +14,6 @@ return {
           "lua_ls",
           "eslint",
           "clangd",
-          "cmake",
           "cssls",
           "bashls",
           "emmet_ls",
