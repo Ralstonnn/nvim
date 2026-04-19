@@ -5,7 +5,7 @@ return {
     ---@type oil.SetupOpts
     opts = {
       keymaps = {
-        ["g?"] = { "actions.show_help", mode = "n" },
+        ["?"] = { "actions.show_help", mode = "n" },
         ["<CR>"] = "actions.select",
         ["<C-u>"] = { "actions.select", opts = { vertical = true } },
         ["<C-i>"] = { "actions.select", opts = { horizontal = true } },
@@ -21,6 +21,37 @@ return {
         ["gx"] = "actions.open_external",
         ["g."] = { "actions.toggle_hidden", mode = "n" },
         ["g\\"] = { "actions.toggle_trash", mode = "n" },
+        ["yr"] = {
+          callback = function()
+            local entry = require("oil").get_cursor_entry()
+            if not entry then
+              return
+            end
+
+            local full_path = require("oil").get_current_dir() .. entry.name
+            local rel_path = "./" .. vim.fn.fnamemodify(full_path, ":.")
+
+            vim.fn.setreg("+", rel_path)
+            vim.notify("Copied: " .. rel_path)
+          end,
+          mode = "n",
+          desc = "Copy relative path"
+        },
+        ["yp"] = {
+          callback = function()
+            local entry = require("oil").get_cursor_entry()
+            if not entry then
+              return
+            end
+
+            local full_path = require("oil").get_current_dir() .. entry.name
+
+            vim.fn.setreg("+", full_path)
+            vim.notify("Copied: " .. full_path)
+          end,
+          mode = "n",
+          desc = "Copy absolute path"
+        },
       },
       use_default_keymaps = false,
     },
