@@ -86,7 +86,7 @@ return {
     end,
     keys = {
       {
-        "<leader>o",
+        "<leader>O",
         "<cmd>Oil<cr>",
         desc = "Open oil",
       },

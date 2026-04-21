@@ -30,7 +30,8 @@ return {
         { "<leader>ts", group = "[T]abs [S]elect" },
         { "<leader>l", group = "[L]sp" },
         { "<leader>le", group = "[L]sp [E]rrors" },
-        { "<leader>o", group = "[O]il" },
+        { "<leader>o", group = "[O]verseer" },
+        { "<leader>O", group = "[O]il" },
         { "<leader>u", group = "UFO nvim" },
         { "<leader>ur", group = "UFO nvim reload" },
       })
