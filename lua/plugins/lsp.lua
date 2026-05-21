@@ -20,6 +20,8 @@ return {
           "tailwindcss",
           "jdtls",
           "typos_lsp",
+          "docker_compose_language_service",
+          "dockerls",
         },
       })
 
