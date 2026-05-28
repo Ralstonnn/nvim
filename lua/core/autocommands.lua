@@ -18,3 +18,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- 	group = vim.api.nvim_create_augroup("clear-unnamed-buffers", { clear = true }),
 -- 	command = "bufdo if empty(expand('%:p')) | bd | endif",
 -- })
+
+-- -- Add treesitter parsers
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function(args)
+--     local ft = vim.bo[args.buf].filetype
+--     local lang = vim.treesitter.language.get_lang(ft)
+--
+--     if lang and vim.treesitter.language.add(lang) then
+--       vim.treesitter.start(args.buf, lang)
+--       vim.bo[args.buf].syntax = "off"
+--     end
+--   end,
+-- })
