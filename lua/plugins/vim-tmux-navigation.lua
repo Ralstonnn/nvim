@@ -1,4 +1,3 @@
-local in_tmux = vim.env.TMUX ~= nil
 local in_zellij = vim.env.ZELLIJ ~= nil
 
 return {
@@ -6,7 +5,7 @@ return {
     "swaits/zellij-nav.nvim",
     lazy = true,
     event = "VeryLazy",
-    cond = in_zellij and not in_tmux,
+    cond = in_zellij,
     keys = {
       { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>", { silent = true, desc = "navigate left or tab" } },
       { "<c-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "navigate down" } },
@@ -18,7 +17,7 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    cond = in_tmux and not in_zellij,
+    cond = not in_zellij,
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
