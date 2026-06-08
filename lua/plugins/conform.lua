@@ -24,6 +24,7 @@ return {
         bash = { "beautysh" },
         proto = { "buf" },
         kotlin = { "ktlint" },
+        yaml = { "prettierd" },
       },
     },
     config = function(_, opts)
