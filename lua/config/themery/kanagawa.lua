@@ -7,7 +7,7 @@ return {
         theme = "wave",
         transparent = false,
       })
-    ]]
+    ]],
   },
   {
     name = "kanagawa-wave-transparent",
@@ -17,7 +17,7 @@ return {
         theme = "wave",
         transparent = true,
       })
-    ]]
+    ]],
   },
   {
     name = "kanagawa-dragon",
@@ -27,6 +27,6 @@ return {
         theme = "dragon",
         transparent = false,
       })
-    ]]
+    ]],
   },
 }
