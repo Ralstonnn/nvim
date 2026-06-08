@@ -20,8 +20,8 @@ return {
       require("config.themery.rose-pine"),
       require("config.themery.sonokai"),
       require("config.themery.tokyonight"),
-      require("config.themery.tokyodark"),
       {
+        "tokyodark",
         "everforest",
       },
     }),
