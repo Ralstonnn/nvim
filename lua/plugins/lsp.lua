@@ -5,40 +5,47 @@ return {
       ensure_installed = {},
     },
     config = function()
-      -- Install LSPs
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "vue_ls", -- NOTE: Last working version was 3.0.1 with next major update vue 2 support will be dropped
-          "vtsls",
-          "svelte",
-          "lua_ls",
-          "eslint",
-          "clangd",
-          "cssls",
-          "bashls",
-          "emmet_ls",
-          "tailwindcss",
-          "jdtls",
-          "typos_lsp",
-          "docker_compose_language_service",
-          "dockerls",
-        },
-      })
+      local is_nixos = vim.uv.fs_stat("/etc/NIXOS") ~= nil
 
-      -- Install formatters, linters, etc..
-      require("mason-tool-installer").setup({
-        ensure_installed = {
-          "buf",
-          "stylua", -- Used to format Lua code
-          "prettierd",
-          "clang-format",
-          "java-debug-adapter",
-          "beautysh",
-          "cpptools", -- C, CPP, RUST DAP
-          "eslint_d",
-          "cspell",
-        },
-      })
+      if is_nixos then
+        require("mason-lspconfig").setup({})
+        require("mason-tool-installer").setup({})
+      else
+        -- Install LSPs
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            "vue_ls", -- NOTE: Last working version was 3.0.1 with next major update vue 2 support will be dropped
+            "vtsls",
+            "svelte",
+            "lua_ls",
+            "eslint",
+            "clangd",
+            "cssls",
+            "bashls",
+            "emmet_ls",
+            "tailwindcss",
+            "jdtls",
+            "typos_lsp",
+            "docker_compose_language_service",
+            "dockerls",
+          },
+        })
+
+        -- Install formatters, linters, etc..
+        require("mason-tool-installer").setup({
+          ensure_installed = {
+            "buf",
+            "stylua", -- Used to format Lua code
+            "prettierd",
+            "clang-format",
+            "java-debug-adapter",
+            "beautysh",
+            "cpptools", -- C, CPP, RUST DAP
+            "eslint_d",
+            "cspell",
+          },
+        })
+      end
     end,
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },

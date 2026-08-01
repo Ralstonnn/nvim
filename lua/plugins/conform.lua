@@ -25,6 +25,7 @@ return {
         proto = { "buf" },
         kotlin = { "ktlint" },
         yaml = { "prettierd" },
+        nix = { "nixfmt" }
       },
     },
     config = function(_, opts)
