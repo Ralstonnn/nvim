@@ -6,8 +6,9 @@ return {
     },
     config = function()
       local is_nixos = vim.uv.fs_stat("/etc/NIXOS") ~= nil
+      local is_nix_darwin = vim.fn.has("mac") == 1 and vim.fn.executable("darwin-rebuild") == 1
 
-      if is_nixos then
+      if is_nixos or is_nix_darwin then
         require("mason-lspconfig").setup({})
         require("mason-tool-installer").setup({})
       else
