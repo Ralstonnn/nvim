@@ -8,28 +8,29 @@ return {
       local is_nixos = vim.uv.fs_stat("/etc/NIXOS") ~= nil
       local is_nix_darwin = vim.fn.has("mac") == 1 and vim.fn.executable("darwin-rebuild") == 1
 
+      local lsps = {
+        "vue_ls", -- NOTE: Last working version was 3.0.1 with next major update vue 2 support will be dropped
+        "vtsls",
+        "svelte",
+        "lua_ls",
+        "eslint",
+        "clangd",
+        "cssls",
+        "bashls",
+        "emmet_ls",
+        "tailwindcss",
+        "jdtls",
+        "typos_lsp",
+        "docker_compose_language_service",
+        "dockerls",
+      }
+
       if is_nixos or is_nix_darwin then
-        require("mason-lspconfig").setup({})
-        require("mason-tool-installer").setup({})
+        vim.lsp.enable(lsps)
       else
         -- Install LSPs
         require("mason-lspconfig").setup({
-          ensure_installed = {
-            "vue_ls", -- NOTE: Last working version was 3.0.1 with next major update vue 2 support will be dropped
-            "vtsls",
-            "svelte",
-            "lua_ls",
-            "eslint",
-            "clangd",
-            "cssls",
-            "bashls",
-            "emmet_ls",
-            "tailwindcss",
-            "jdtls",
-            "typos_lsp",
-            "docker_compose_language_service",
-            "dockerls",
-          },
+          ensure_installed = lsps,
         })
 
         -- Install formatters, linters, etc..
