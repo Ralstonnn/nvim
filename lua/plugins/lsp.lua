@@ -23,6 +23,7 @@ return {
         "typos_lsp",
         "docker_compose_language_service",
         "dockerls",
+        "nixd",
       }
 
       if is_nixos or is_nix_darwin then
