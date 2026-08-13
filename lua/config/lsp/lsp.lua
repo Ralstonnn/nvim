@@ -20,6 +20,9 @@ local function onLspAttach(event)
   map("K", vim.lsp.buf.hover, "Hover Documentation")
   -- map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
   map("<leader>lr", "<cmd>lsp restart<CR>", "[L]sp [R]estart")
+  map("<leader>lh", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  end, "[L]sp inlay [H]ints")
 
   -- The following two autocommands are used to highlight references of the
   -- word under your cursor when your cursor rests there for a little while.
@@ -73,4 +76,3 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.pcss",
   command = "set filetype=css",
 })
-
