@@ -53,7 +53,9 @@ local function onLspAttach(event)
   -- end
 end
 
--- vim.lsp.inlay_hint.enable(true)
+-- Enable inlay hints by default
+vim.lsp.inlay_hint.enable(true)
+
 local severity = vim.diagnostic.severity
 vim.diagnostic.config({
   signs = {
