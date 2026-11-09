@@ -69,3 +69,6 @@ keymap.set('n', '<c-a-k>', '<cmd>resize +5<CR>', {desc = "increase pane height"}
 -- end
 -- keymap.set("n", "<leader>bco", closeAllBuffersButCurrentOne, { desc = "Buffers close all buffers except current" })
 keymap.set("n", "<leader>bca", "<cmd>bufdo bdelete<CR>", { desc = "Buffers close all" })
+keymap.set("n", "<leader>br", "<cmd>edit<CR>", { desc = "Buffer reload" })
+
+keymap.set("n", "<leader>Vr", "<cmd>restart<CR>", { desc = "Restart nvim" })

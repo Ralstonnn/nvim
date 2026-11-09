@@ -62,3 +62,6 @@ vim.o.hlsearch = true
 
 -- Enable true colors
 vim.opt.termguicolors = true
+
+-- Automatically reload file when it has been changed somewhere else
+vim.opt.autoread = true
