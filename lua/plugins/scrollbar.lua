@@ -1,9 +1,8 @@
 return {
-  {
-    "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-      require("scrollbar.handlers.gitsigns").setup()
-    end,
+  "petertriho/nvim-scrollbar",
+  opts = {
+    providers = {
+      gitsigns = true,
+    },
   },
 }
