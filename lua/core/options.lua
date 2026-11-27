@@ -1,3 +1,8 @@
+-- Nvim tree forces to disable--
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+--------------------------------
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -18,7 +23,7 @@ vim.o.showmode = false
 --  Remove this oion if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = "unnamedplus"
 end)
 
 vim.o.breakindent = true

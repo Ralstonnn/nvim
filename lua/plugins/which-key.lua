@@ -14,7 +14,7 @@ return {
         { "<leader>c", group = "[C]ode" },
         { "<leader>d", group = "[D]ebugger" },
         { "<leader>du", group = "[D]ap UI" },
-        { "<leader>n", group = "[N]eo tree" },
+        { "<leader>n", group = "[N]vim tree" },
         { "<leader>g", group = "[G]it" },
         { "<leader>gs", group = "[G]it [S]igns" },
         { "<leader>gh", group = "[G]it [H]unk" },
