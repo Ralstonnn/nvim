@@ -60,18 +60,6 @@ end
 -- Enable inlay hints by default
 vim.lsp.inlay_hint.enable(true)
 
-local severity = vim.diagnostic.severity
-vim.diagnostic.config({
-  signs = {
-    text = {
-      [severity.ERROR] = " ",
-      [severity.WARN] = " ",
-      [severity.HINT] = "󰠠 ",
-      [severity.INFO] = " ",
-    },
-  },
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = onLspAttach,

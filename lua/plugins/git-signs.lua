@@ -20,15 +20,12 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
     {"<leader>gdt", "<cmd>Gitsigns diffthis<CR>", desc = "Git Signs Diff This"},
     {"<leader>gdd", "<cmd>Gitsigns diff<CR>", desc = "Git Signs Diff"},
     {"<leader>gb", "<cmd>Gitsigns blame<CR>", desc = "Git Blame Toggle"},
-  },
-  config = function()
-    local customUtils = require("utils.git.custom")
-    -- NOTE: Custom functions
-    vim.keymap.set(
-      "n",
+    {
       "<leader>gwt",
-      customUtils.copyTaskName,
-      { desc = "[G]it [W]ork [T]ask Name" }
-    )
-  end
+      function()
+        require("utils.git.custom").copyTaskName()
+      end,
+      desc = "[G]it [W]ork [T]ask Name",
+    },
+  },
 }

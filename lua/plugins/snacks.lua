@@ -10,7 +10,7 @@ return {
     dashboard = require("config.snacks.config.dashboard"),
     input = require("config.snacks.config.input"),
     image = require("config.snacks.config.image"),
-    notifier = require("config.snacks.config.picker"),
+    notifier = require("config.snacks.config.notifier"),
     dim = require("config.snacks.config.dim"),
     styles = require("config.snacks.config.styles"),
     indent = require("config.snacks.config.indent"),

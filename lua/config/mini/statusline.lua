@@ -39,7 +39,7 @@ statusline.setup({
       })
     end,
   },
-  use_icons = vim.g.have_ned_font,
+  use_icons = vim.g.have_nerd_font,
 })
 
 -- Autocommand to update statusline on macro recording

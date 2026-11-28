@@ -6,35 +6,35 @@ return {
     opts = {},
     keys = {
       {
-        "or",
+        "<leader>or",
         "<cmd>OverseerRun<CR>",
-        desc = "Overseer Run"
+        desc = "Overseer Run",
       },
       {
-        "oo",
+        "<leader>oo",
         "<cmd>OverseerOpen<CR>",
-        desc = "Overseer Open"
+        desc = "Overseer Open",
       },
       {
-        "oc",
+        "<leader>oc",
         "<cmd>OverseerClose<CR>",
-        desc = "Overseer Close"
+        desc = "Overseer Close",
       },
       {
-        "ot",
+        "<leader>ot",
         "<cmd>OverseerToggle<CR>",
-        desc = "Overseer Toggle"
+        desc = "Overseer Toggle",
       },
       {
-        "os",
+        "<leader>os",
         "<cmd>OverseerShell<CR>",
-        desc = "Overseer Shell"
+        desc = "Overseer Shell",
       },
       {
-        "oa",
+        "<leader>oa",
         "<cmd>OverseerTaskAction<CR>",
-        desc = "Overseer Task Action"
+        desc = "Overseer Task Action",
       },
-    }
+    },
   },
 }
