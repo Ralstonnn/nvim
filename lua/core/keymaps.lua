@@ -58,17 +58,30 @@ keymap.set('n', '<c-a-k>', '<cmd>resize +5<CR>', {desc = "increase pane height"}
 -- keymap.set("n", "<leader>tsc", "<cmd>BufferLinePickClose<CR>", { desc = "Pick a tab to close" })
 
 -- close buffers
--- local function closeAllBuffersButCurrentOne()
---     local bufs = vim.api.nvim_list_bufs()
---     local current_buf = vim.api.nvim_get_current_buf()
---     for _, i in ipairs(bufs) do
---         if i ~= current_buf then
---             vim.api.nvim_buf_delete(i, {})
---         end
---     end
--- end
--- keymap.set("n", "<leader>bco", closeAllBuffersButCurrentOne, { desc = "Buffers close all buffers except current" })
-keymap.set("n", "<leader>bca", "<cmd>bufdo bdelete<CR>", { desc = "Buffers close all" })
+-- Delete every listed buffer except the current one. Unsaved buffers are
+-- skipped (never force-discarded) and reported instead.
+local function closeAllBuffersButCurrent()
+  local current = vim.api.nvim_get_current_buf()
+  local closed, failed = 0, 0
+
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.bo[buf].buflisted then
+      if pcall(vim.api.nvim_buf_delete, buf, { force = false }) then
+        closed = closed + 1
+      else
+        failed = failed + 1
+      end
+    end
+  end
+
+  if failed > 0 then
+    vim.notify(
+      ("Closed %d buffer(s); %d skipped (unsaved changes)"):format(closed, failed),
+      vim.log.levels.WARN
+    )
+  end
+end
+keymap.set("n", "<leader>bca", closeAllBuffersButCurrent, { desc = "Buffers close all" })
 keymap.set("n", "<leader>br", "<cmd>edit<CR>", { desc = "Buffer reload" })
 
 keymap.set("n", "<leader>Vr", "<cmd>restart<CR>", { desc = "Restart nvim" })

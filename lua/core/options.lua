@@ -68,5 +68,14 @@ vim.o.hlsearch = true
 -- Enable true colors
 vim.opt.termguicolors = true
 
+-- Rounded borders for floating windows (0.11+)
+vim.o.winborder = "rounded"
+
+-- Folding (nvim-ufo provider needs large foldlevel values)
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 -- Automatically reload file when it has been changed somewhere else
 vim.opt.autoread = true

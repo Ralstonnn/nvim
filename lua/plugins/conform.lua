@@ -108,8 +108,8 @@ return {
 
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
         conform.format({
-          lsp_fallback = true,
-          async = false,
+          lsp_format = "fallback",
+          async = true,
           timeout_ms = 5000,
         })
       end, { desc = "Format current file with conform" })
