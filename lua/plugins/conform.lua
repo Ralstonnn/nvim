@@ -1,3 +1,104 @@
+-- Project overrides live in .conform.json at the Git root:
+-- { "formatters_by_ft": { "lua": ["stylua"] },
+--   "args": { "stylua": ["--indent-width", "2"] } }
+local function load_config(bufnr)
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  local path = filename ~= "" and vim.fs.dirname(filename) or vim.fn.getcwd()
+  local result = vim.fn.systemlist({ "git", "-C", path, "rev-parse", "--show-toplevel" })
+  if vim.v.shell_error ~= 0 or not result[1] then
+    return nil
+  end
+
+  local config_path = vim.fs.joinpath(result[1], ".conform.json")
+  if vim.fn.filereadable(config_path) == 0 then
+    return nil
+  end
+  local ok, config = pcall(function()
+    return vim.json.decode(table.concat(vim.fn.readfile(config_path), "\n"))
+  end)
+  if ok and type(config) == "table" then
+    for _, key in ipairs({ "formatters_by_ft", "args" }) do
+      local values = config[key]
+      if values ~= nil then
+        if type(values) ~= "table" then
+          ok = false
+          break
+        end
+        for name, list in pairs(values) do
+          if type(name) ~= "string" or type(list) ~= "table" or not vim.islist(list) then
+            ok = false
+            break
+          end
+          for _, value in ipairs(list) do
+            if type(value) ~= "string" then
+              ok = false
+              break
+            end
+          end
+        end
+      end
+    end
+  else
+    ok = false
+  end
+  if not ok then
+    vim.notify("Invalid formatting configuration in " .. config_path, vim.log.levels.ERROR)
+    return nil
+  end
+  return config
+end
+
+local function format(opts, callback)
+  local conform = require("conform")
+  opts = vim.deepcopy(opts or {})
+  local bufnr = opts.bufnr
+  if not bufnr or bufnr == 0 then
+    bufnr = vim.api.nvim_get_current_buf()
+  end
+  local config = load_config(bufnr)
+  if config then
+    if not opts.formatters then
+      -- Replace lists per filetype, retaining defaults for unspecified filetypes.
+      local by_ft = vim.tbl_extend("force", conform.formatters_by_ft, config.formatters_by_ft or {})
+      local ft = vim.bo[bufnr].filetype
+      local candidates = { ft }
+      local parts = vim.split(ft, ".", { plain = true })
+      for i = #parts, 1, -1 do
+        candidates[#candidates + 1] = parts[i]
+      end
+      candidates[#candidates + 1] = "_"
+      opts.formatters = {}
+      local function append(value)
+        local names = type(value) == "function" and value(bufnr) or value or {}
+        for _, name in ipairs(names) do
+          if not vim.tbl_contains(opts.formatters, name) then
+            opts.formatters[#opts.formatters + 1] = name
+          end
+        end
+      end
+      for _, candidate in ipairs(candidates) do
+        local value = by_ft[candidate]
+        if value and (type(value) == "function" or next(value) ~= nil) then
+          append(value)
+          break
+        end
+      end
+      append(by_ft["*"])
+    end
+
+    -- Private inherited formatters keep project arguments out of global defaults.
+    for i, name in ipairs(opts.formatters) do
+      local args = (config.args or {})[name]
+      if args then
+        local alias = "project_" .. name .. "_" .. vim.fn.sha256(vim.json.encode(args))
+        conform.formatters[alias] = { inherit = name, prepend_args = args }
+        opts.formatters[i] = alias
+      end
+    end
+  end
+  return conform.format(opts, callback)
+end
+
 return {
   { -- Autoformat
     "stevearc/conform.nvim",
@@ -31,83 +132,10 @@ return {
     config = function(_, opts)
       local conform = require("conform")
 
-      -- Constant path to the config file (relative to git root)
-      local config_filename = ".conform.json"
-
-      -- Default formatters if no config file present
-      local defaults = {
-        formatters = opts.formatters_by_ft,
-        args = {},
-      }
-
-      --- Load configuration from `.conform.json` in the git repository root
-      --- Example `.conform.json`:
-      -- {
-      --   "formatters_by_ft": {
-      --     "python": ["isort", "yapf"],
-      --     "json": ["prettier"],
-      --     "yaml": ["prettier"]
-      --   },
-      --   "args": {
-      --     "yapf": ["--style", "{based_on_style: pep8, indent_width: 4}"],
-      --     "isort": ["--profile", "open_stack", "--line-length", "79"]
-      --   }
-      -- }
-
-      local load_config = function(bufnr)
-        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":h")
-        local git_root = vim.fn.systemlist("git -C " .. vim.fn.fnameescape(path) .. " rev-parse --show-toplevel")[1]
-
-        if vim.v.shell_error ~= 0 or not git_root then
-          vim.notify("No git root found, using defaults", vim.log.levels.DEBUG)
-          return nil
-        end
-
-        local cfg_path = git_root .. "/" .. config_filename
-        if vim.fn.filereadable(cfg_path) == 0 then
-          vim.notify("No " .. config_filename .. " found, using defaults", vim.log.levels.DEBUG)
-          return nil
-        end
-
-        local ok_read, content = pcall(vim.fn.readfile, cfg_path)
-        if not ok_read or not content then
-          vim.notify("Failed to read " .. cfg_path, vim.log.levels.ERROR)
-          return nil
-        end
-
-        local ok_parse, parsed = pcall(vim.fn.json_decode, table.concat(content, "\n"))
-        if not ok_parse then
-          vim.notify("Invalid JSON in " .. cfg_path, vim.log.levels.ERROR)
-          return nil
-        end
-
-        return {
-          formatters = parsed.formatters_by_ft or {},
-          args = parsed.args or {},
-        }
-      end
-
-      local orig_format = conform.format
-
-      conform.format = function(opts)
-        local bufnr = opts.buf or vim.api.nvim_get_current_buf()
-        local cfg = load_config(bufnr) or defaults
-        -- vim.notify("Using conform config: " .. vim.inspect(cfg), vim.log.levels.DEBUG)
-
-        conform.formatters_by_ft = cfg.formatters
-
-        for name, arg_list in pairs(cfg.args) do
-          conform.formatters[name] = conform.formatters[name] or {}
-          conform.formatters[name].prepend_args = function()
-            return arg_list
-          end
-        end
-
-        orig_format(opts)
-      end
+      conform.setup(opts)
 
       vim.keymap.set({ "n", "v" }, "<leader>f", function()
-        conform.format({
+        format({
           lsp_format = "fallback",
           async = true,
           timeout_ms = 5000,

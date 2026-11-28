@@ -23,10 +23,21 @@ return {
     lazy = false,
     config = function()
       vim.api.nvim_create_autocmd("User", {
+        group = vim.api.nvim_create_augroup("OilLspRename", { clear = true }),
         pattern = "OilActionsPost",
         callback = function(event)
-          if event.data.actions[1].type == "move" then
-            Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
+          local data = event.data or {}
+          if data.err then
+            return
+          end
+          for _, action in ipairs(data.actions or {}) do
+            if action.type == "move" then
+              local src_scheme, src_path = require("oil.util").parse_url(action.src_url)
+              local dest_scheme, dest_path = require("oil.util").parse_url(action.dest_url)
+              if src_scheme == "oil://" and dest_scheme == "oil://" then
+                Snacks.rename.on_rename_file(src_path, dest_path)
+              end
+            end
           end
         end,
       })
